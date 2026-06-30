@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中華民國國家治理與防衛作戰 v3.05</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --text-gold: #f0e6d2;
+            --claude-color: #d97736;
+            --grok-color: #24292f;
+            --download-color: #238636;
+            --border-color: #30363d;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-size: 1.6rem;
+            color: var(--text-gold);
+            margin-bottom: 10px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #8b949e;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            text-align: left;
+            font-size: 0.95rem;
+            color: #8b949e;
+            margin-bottom: 10px;
+            padding-left: 5px;
+            border-left: 3px solid var(--text-gold);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s, filter 0.2s;
+            text-decoration: none;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .btn:hover {
+            filter: brightness(1.2);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-download {
+            background-color: var(--download-color);
+        }
+
+        .btn-claude {
+            background-color: var(--claude-color);
+        }
+
+        .btn-grok {
+            background-color: var(--grok-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .notice {
+            background-color: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #8b949e;
+            text-align: left;
+            line-height: 1.6;
+            margin-top: 25px;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #58a6ff;
+            color: #0d1117;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">⚔️ 歡迎來到《中華民國國家治理與防衛作戰》<br>最新線上版 (v3.05)</div>
+    <div class="subtitle">全程免登入，請依序執行以下步驟即可啟動兵棋推演：</div>
+
+    <div class="section-title">第一步：獲取最新的戰略推演核心規則</div>
+    <a href="https://drive.google.com/uc?export=download&id=1luUA03Qrd3XBJFWdxj0zDe2o4HZr6DTe" class="btn btn-download">
+        <span class="icon">📥</span> 下載最新規則檔案
+    </a>
+
+    <div class="section-title">第二步：選擇你要啟動的 AI 戰略引擎</div>
+    <div class="btn-group">
+        <button class="btn btn-claude" onclick="launchAI('claude')">
+            <span class="icon">🔵</span> 使用 Claude 啟動遊戲
+        </button>
+
+        <button class="btn btn-grok" onclick="launchAI('grok')">
+            <span class="icon">🟠</span> 使用 Grok 啟動遊戲
+        </button>
+    </div>
+
+    <div class="notice">
+        💡 <b>作戰說明：</b><br>
+        點擊 AI 啟動按鈕後，系統會<b>自動複製開場提示詞</b>並為您開啟 AI 網頁。請直接在 AI 對話框中<b>「貼上提示詞」</b>並<b>「上傳剛下載的規則檔」</b>，即可免登入、免下載他人舊版，直接開始玩！
+    </div>
+</div>
+
+<div class="toast" id="toastMessage">📋 啟動指令已複製到剪貼簿！</div>
+
+<script>
+    function launchAI(aiChoice) {
+        // 設定要塞給 AI 的初始引導提示詞
+        const promptText = "你是一位精通軍事戰略與政治決策的兵棋推演 GM（導師）。請仔細閱讀我上傳的《中華民國國家治理與防衛作戰》核心規則檔案。當我說「開始遊戲」時，請嚴格依據檔案中的機制與數據判定，跳過前言，直接從局勢簡報與序章開始引導我進行決策。";
+
+        // 複製提示詞到剪貼簿
+        navigator.clipboard.writeText(promptText).then(() => {
+            const toast = document.getElementById('toastMessage');
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+                
+                // 依據玩家的選擇跳轉到對應的 AI 官方網頁
+                if (aiChoice === 'claude') {
+                    window.open('https://claude.ai/', '_blank');
+                } else if (aiChoice === 'grok') {
+                    window.open('https://grok.com/', '_blank');
+                }
+            }, 1000); // 彈窗顯示 1 秒後觸發跳轉
+        }).catch(err => {
+            console.error('無法複製文字: ', err);
+            // 萬一瀏覽器不支援自動複製，直接允許跳轉
+            if (aiChoice === 'claude') {
+                window.open('https://claude.ai/', '_blank');
+            } else if (aiChoice === 'grok') {
+                window.open('https://grok.com/', '_blank');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
