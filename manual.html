@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中華民國台灣模擬器 V3.05 — 玩家說明書</title>
+<title>中華民國台灣模擬器 V3.06 — 玩家說明書</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@300;400;500&family=Share+Tech+Mono&display=swap');
 
@@ -16,6 +16,7 @@
     --blue-gov: #1b3a6b;
     --blue-light: #2c5f9e;
     --rule: #8b7355;
+    --green: #1a5c3a;
     --mono: 'Share Tech Mono', monospace;
     --serif: 'Noto Serif TC', serif;
     --sans: 'Noto Sans TC', sans-serif;
@@ -84,16 +85,25 @@
     position: relative;
   }
 
-  .cover-title span {
-    color: #d4af6a;
-  }
+  .cover-title span { color: #d4af6a; }
 
   .cover-ver {
     font-family: var(--mono);
     font-size: 12px;
     color: rgba(255,255,255,0.5);
     letter-spacing: 0.2em;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+  }
+
+  .cover-new-badge {
+    background: rgba(212,175,106,0.15);
+    border: 1px solid rgba(212,175,106,0.5);
+    padding: 6px 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #d4af6a;
+    margin-bottom: 24px;
   }
 
   .cover-doc-label {
@@ -113,7 +123,7 @@
     padding: 60px 40px 100px;
   }
 
-  /* ── CHAPTER HEADER ── */
+  /* ── CHAPTER ── */
   .chapter {
     margin-top: 72px;
     margin-bottom: 32px;
@@ -143,9 +153,7 @@
   }
 
   /* ── SECTION ── */
-  .section {
-    margin-top: 36px;
-  }
+  .section { margin-top: 36px; }
 
   .section h3 {
     font-family: var(--serif);
@@ -157,12 +165,18 @@
     border-left: 3px solid var(--gold);
   }
 
-  p {
-    margin-bottom: 14px;
-    color: #2a2a3e;
+  .section h4 {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue-gov);
+    margin: 18px 0 8px;
+    opacity: 0.85;
   }
 
-  /* ── CALLOUT BOXES ── */
+  p { margin-bottom: 14px; color: #2a2a3e; }
+
+  /* ── CALLOUT ── */
   .callout {
     background: var(--paper-dark);
     border-left: 4px solid var(--blue-gov);
@@ -171,15 +185,9 @@
     font-size: 14px;
   }
 
-  .callout.warn {
-    border-left-color: var(--red);
-    background: #fdf0ee;
-  }
-
-  .callout.tip {
-    border-left-color: var(--gold);
-    background: #fdf8ee;
-  }
+  .callout.warn { border-left-color: var(--red); background: #fdf0ee; }
+  .callout.tip  { border-left-color: var(--gold); background: #fdf8ee; }
+  .callout.good { border-left-color: var(--green); background: #eef5f0; }
 
   .callout-label {
     font-family: var(--mono);
@@ -190,14 +198,15 @@
     opacity: 0.6;
   }
 
-  .callout.warn .callout-label { color: var(--red); }
-  .callout.tip .callout-label { color: var(--gold); }
-  .callout .callout-label { color: var(--blue-gov); }
+  .callout.warn .callout-label { color: var(--red); opacity:1; }
+  .callout.tip  .callout-label { color: var(--gold); opacity:1; }
+  .callout.good .callout-label { color: var(--green); opacity:1; }
+  .callout      .callout-label { color: var(--blue-gov); }
 
   /* ── INDICATOR GRID ── */
   .indicator-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 12px;
     margin: 20px 0;
   }
@@ -224,25 +233,42 @@
     margin-bottom: 8px;
   }
 
-  .ind-desc {
+  .ind-desc { font-size: 13px; color: #444; line-height: 1.6; }
+
+  /* ── TABLE ── */
+  .faction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
     font-size: 13px;
-    color: #444;
-    line-height: 1.6;
   }
 
-  /* ── FLOW DIAGRAM ── */
-  .flow {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 24px 0;
+  .faction-table th {
+    background: var(--blue-gov);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 12px;
   }
 
-  .flow-step {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
+  .faction-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd6c8;
+    vertical-align: top;
   }
+
+  .faction-table tr:nth-child(even) td { background: #faf7f2; }
+
+  .danger { color: var(--red); font-weight: 500; }
+  .warn-val { color: #b8600b; font-weight: 500; }
+  .resource { color: var(--green); font-weight: 500; }
+
+  /* ── FLOW ── */
+  .flow { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
+
+  .flow-step { display: flex; align-items: stretch; gap: 0; }
 
   .flow-left {
     display: flex;
@@ -275,10 +301,7 @@
     min-height: 20px;
   }
 
-  .flow-content {
-    flex: 1;
-    padding: 4px 0 24px 16px;
-  }
+  .flow-content { flex: 1; padding: 4px 0 24px 16px; }
 
   .flow-title {
     font-family: var(--serif);
@@ -288,79 +311,49 @@
     margin-bottom: 6px;
   }
 
-  .flow-desc {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.7;
+  .flow-desc { font-size: 14px; color: #3a3a4e; line-height: 1.7; }
+
+  /* ── INFLUENCE MAP ── */
+  .inf-map {
+    background: var(--paper-dark);
+    border: 1px solid #c8bea8;
+    padding: 20px;
+    margin: 20px 0;
   }
 
-  /* ── FACTION TABLE ── */
-  .faction-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0;
-    font-size: 14px;
+  .inf-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--blue-gov);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.7;
   }
 
-  .faction-table th {
+  .inf-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .inf-node {
     background: var(--blue-gov);
     color: #fff;
-    padding: 10px 14px;
-    text-align: left;
-    font-family: var(--serif);
-    font-weight: 600;
+    padding: 4px 12px;
     font-size: 13px;
+    white-space: nowrap;
+    font-family: var(--sans);
   }
 
-  .faction-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #d8d0c0;
-    vertical-align: top;
-    line-height: 1.6;
-  }
+  .inf-node.danger { background: var(--red); }
+  .inf-node.resource { background: var(--green); }
+  .inf-node.gold-node { background: var(--gold); }
 
-  .faction-table tr:nth-child(even) td {
-    background: var(--paper-dark);
-  }
-
-  .faction-table .danger {
-    color: var(--red);
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  /* ── DEPT GRID ── */
-  .dept-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 16px 0;
-  }
-
-  .dept-card {
-    background: #fff;
-    border: 1px solid #d0c8b8;
-    border-top: 3px solid var(--blue-light);
-    padding: 12px 14px;
-  }
-
-  .dept-card.war {
-    border-top-color: var(--red);
-  }
-
-  .dept-name {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--blue-gov);
-    margin-bottom: 6px;
-  }
-
-  .dept-scope {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.6;
-  }
+  .inf-arrow { color: #888; font-size: 16px; padding-top: 2px; }
+  .inf-effect { font-size: 13px; color: #444; line-height: 1.6; flex: 1; min-width: 200px; }
 
   /* ── EXAMPLE BLOCK ── */
   .example {
@@ -387,157 +380,137 @@
     font-family: var(--sans);
   }
 
-  .example .prompt {
-    color: #d4af6a;
-  }
+  .example .prompt { color: #d4af6a; }
+  .example .comment { color: #5a7a5a; }
 
-  .example .comment {
-    color: #5a7a5a;
-  }
-
-  /* ── INFLUENCE MAP ── */
-  .inf-map {
-    background: #fff;
-    border: 1px solid #d0c8b8;
-    padding: 24px;
-    margin: 20px 0;
-  }
-
-  .inf-title {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--blue-gov);
-    text-align: center;
-    margin-bottom: 20px;
-    letter-spacing: 0.05em;
-  }
-
-  .inf-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    flex-wrap: wrap;
-  }
-
-  .inf-node {
-    background: var(--blue-gov);
-    color: #fff;
-    padding: 5px 12px;
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .inf-node.resource {
-    background: var(--gold);
-    color: #1a1a2e;
-  }
-
-  .inf-node.danger {
-    background: var(--red);
-  }
-
-  .inf-arrow {
-    color: #888;
-    font-size: 16px;
-  }
-
-  .inf-effect {
-    font-size: 12px;
-    color: #555;
-    font-family: var(--mono);
-  }
-
-  /* ── VICTORY TABLE ── */
-  .vic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 20px 0;
-  }
-
-  .vic-card {
-    border: 1px solid #d0c8b8;
-    padding: 16px;
-    text-align: center;
-  }
-
-  .vic-icon {
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-
-  .vic-name {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--blue-gov);
-    margin-bottom: 8px;
-  }
-
-  .vic-req {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.6;
-  }
-
-  /* ── STATUS TABLE ── */
+  /* ── STATUS MOCK ── */
   .status-mock {
-    background: #0d1117;
-    color: #7ec8a0;
+    background: #0d1b2a;
+    color: #a8d8a8;
     font-family: var(--mono);
     font-size: 12px;
-    padding: 20px;
+    line-height: 2;
+    padding: 20px 24px;
     margin: 20px 0;
-    line-height: 1.9;
+    border-radius: 2px;
+    white-space: pre-wrap;
   }
 
-  .status-mock .label { color: #569cd6; }
-  .status-mock .value { color: #ce9178; }
-  .status-mock .warn-val { color: #f44747; }
-  .status-mock .divider { color: #444; }
-  .status-mock .header { color: #d4af6a; font-weight: bold; }
+  .status-mock .header { color: #d4af6a; font-size: 13px; }
+  .status-mock .label { color: #7a9cbf; }
+  .status-mock .value { color: #e8e8e8; }
+  .status-mock .warn-val { color: #f0a060; }
 
-  /* ── DIFFICULTY ── */
-  .diff-row {
+  /* ── DIFFICULTY CARDS ── */
+  .diff-grid {
     display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 0;
-    margin-bottom: 2px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
   }
 
-  .diff-label {
+  .diff-card {
+    border: 1px solid #d0c8b8;
+    padding: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diff-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .diff-card.easy::before   { background: #2e86ab; }
+  .diff-card.normal::before { background: var(--green); }
+  .diff-card.hard::before   { background: var(--gold); }
+  .diff-card.hell::before   { background: var(--red); }
+  .diff-card.real::before   { background: #4a0e0e; }
+
+  .diff-name {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .diff-card.easy   .diff-name { color: #2e86ab; }
+  .diff-card.normal .diff-name { color: var(--green); }
+  .diff-card.hard   .diff-name { color: var(--gold); }
+  .diff-card.hell   .diff-name { color: var(--red); }
+  .diff-card.real   .diff-name { color: #4a0e0e; }
+
+  .diff-desc { font-size: 12px; color: #555; line-height: 1.6; }
+
+  /* ── VICTORY CARDS ── */
+  .victory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .victory-card {
+    border: 1px solid #c8bea8;
+    padding: 18px;
+    background: #fff;
+    position: relative;
+  }
+
+  .victory-card::after {
+    content: attr(data-icon);
+    position: absolute;
+    top: 14px; right: 14px;
+    font-size: 22px;
+    opacity: 0.4;
+  }
+
+  .victory-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 15px;
+    color: var(--blue-gov);
+    margin-bottom: 8px;
+  }
+
+  .victory-cond { font-size: 13px; color: #444; line-height: 1.7; }
+
+  /* ── TRADE SYSTEM ── */
+  .trade-box {
+    background: #fff;
+    border: 1px solid #c8bea8;
+    margin: 20px 0;
+    overflow: hidden;
+  }
+
+  .trade-box-header {
     background: var(--blue-gov);
     color: #fff;
-    font-family: var(--serif);
-    font-size: 13px;
-    padding: 8px 14px;
+    padding: 10px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
     display: flex;
     align-items: center;
+    gap: 12px;
   }
 
-  .diff-label.hard { background: #7b3030; }
-  .diff-label.hell { background: #3d0000; }
-  .diff-label.real { background: #1a0a2e; }
-
-  .diff-desc {
-    background: var(--paper-dark);
-    padding: 8px 14px;
-    font-size: 13px;
-    color: #444;
-    border-bottom: 1px solid #d0c8b8;
-    display: flex;
-    align-items: center;
+  .trade-dir {
+    background: rgba(212,175,106,0.2);
+    border: 1px solid rgba(212,175,106,0.5);
+    color: #d4af6a;
+    padding: 2px 10px;
+    font-size: 10px;
   }
 
-  /* ── RULELINE ── */
+  .trade-box-body { padding: 16px 18px; font-size: 13px; color: #333; line-height: 1.8; }
+
+  /* ── RULE LINE ── */
   .rule-line {
-    height: 1px;
-    background: linear-gradient(to right, var(--rule), transparent);
+    border: none;
+    border-top: 1px solid #c8bea8;
     margin: 48px 0;
   }
 
@@ -545,98 +518,36 @@
   .doc-footer {
     margin-top: 80px;
     padding-top: 20px;
-    border-top: 1px solid #c0b89a;
+    border-top: 1px solid #c8bea8;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 10px;
     color: #999;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
   }
 
-  /* ── AP VISUAL ── */
-  .ap-bar {
-    display: flex;
-    gap: 6px;
-    margin: 12px 0;
-    flex-wrap: wrap;
-  }
-
-  .ap-pip {
-    width: 36px;
-    height: 36px;
-    border: 2px solid var(--blue-gov);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--blue-gov);
-  }
-
-  .ap-pip.used {
-    background: var(--blue-gov);
-    color: #fff;
-  }
-
-  .ap-label {
-    font-size: 12px;
-    color: #666;
-    margin-top: 4px;
-  }
-
-  /* ── MISSION CARD ── */
-  .mission-card {
-    border: 1px solid #c0b89a;
-    padding: 16px 20px;
-    margin: 16px 0;
-    position: relative;
-    background: #fffdf8;
-  }
-
-  .mission-card::before {
-    content: '持續任務';
-    position: absolute;
-    top: -10px;
-    left: 12px;
+  /* ── NEW TAG ── */
+  .new-tag {
+    display: inline-block;
     background: var(--gold);
     color: #fff;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    padding: 2px 10px;
-    font-family: var(--sans);
-  }
-
-  .mission-card table {
-    width: 100%;
-    font-size: 13px;
-    border-collapse: collapse;
-  }
-
-  .mission-card td {
-    padding: 3px 8px 3px 0;
-    color: #333;
-    vertical-align: top;
-  }
-
-  .mission-card td:first-child {
     font-family: var(--mono);
-    font-size: 11px;
-    color: #888;
-    white-space: nowrap;
-    padding-right: 12px;
-    width: 90px;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
   }
 
-  /* responsive */
   @media (max-width: 600px) {
-    .dept-grid { grid-template-columns: 1fr; }
-    .vic-grid { grid-template-columns: 1fr; }
-    .indicator-grid { grid-template-columns: 1fr 1fr; }
+    .doc { padding: 40px 20px 60px; }
     .cover-title { font-size: 26px; }
     .cover-emblem { font-size: 52px; }
-    .doc { padding: 40px 20px 80px; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .doc-footer { flex-direction: column; gap: 6px; }
   }
 </style>
 </head>
@@ -645,240 +556,422 @@
 <!-- ══ COVER ══ -->
 <div class="cover">
   <div class="cover-emblem">中華民國</div>
-  <div class="cover-subtitle">Republic of China · Taiwan</div>
-  <div class="cover-title">國家治理與防衛作戰<br><span>模擬器</span></div>
-  <div class="cover-ver">VERSION 3.05 ── PLAYER HANDBOOK</div>
-  <div class="cover-doc-label">玩家使用說明書 ── 機密等級：一般</div>
+  <div class="cover-subtitle">Republic of China Strategic Simulation</div>
+  <div class="cover-title">國家治理與<span>防衛作戰</span></div>
+  <div class="cover-ver">VERSION 3.06 — PLAYER MANUAL</div>
+  <div class="cover-new-badge">V3.06 新增：國際戰略物資交易系統 · 共軍行動準則 · 停火談判機制</div>
+  <div class="cover-doc-label">Player Reference Document</div>
 </div>
 
-<!-- ══ DOCUMENT BODY ══ -->
+<!-- ══ BODY ══ -->
 <div class="doc">
 
   <!-- 前言 -->
   <div class="chapter">
-    <div class="chapter-num">PREFACE</div>
-    <h2>閱讀本說明書之前</h2>
+    <span class="chapter-num">PREFACE</span>
+    <h2>關於本遊戲</h2>
   </div>
 
-  <p>本模擬器是一套以中華民國台灣為背景的戰略治理推演系統，由AI擔任遊戲主持人（GM），玩家扮演國家最高領導者，在真實的政治、經濟、軍事壓力下做出決策，塑造這個國家的歷史。</p>
+  <p>本遊戲以中華民國台灣的現實處境為骨幹，由AI擔任遊戲主持人（GM），玩家扮演甫就任的中華民國總統，在有限的資源、派系壓力與外部威脅之下治理國家，並在戰事爆發時指揮防衛作戰。</p>
 
-  <p>本說明書的目的是讓玩家了解遊戲的基本邏輯、程序與指令方式，使推演能夠順暢進行。<strong>本書刻意不揭露任何計算公式</strong>——你只需要理解各項數據之間的因果關係，並以統帥的直覺與判斷來治理國家。數字的背後，是真實的政策邏輯。</p>
+  <p>遊戲分為兩個運作模式：平時的<strong>月制</strong>（國家治理，每回合代表一個月），以及戰時的<strong>日制</strong>（防衛作戰，每回合代表一天）。GM負責根據規則執行所有結算，玩家的任務是在掌握有限資訊的情況下，做出你認為正確的決策。</p>
 
-  <div class="callout tip">
-    <div class="callout-label">給新玩家</div>
-    這不是一款你可以「算贏」的遊戲。它更像真實的執政困境：資源有限、各方利益衝突、外部壓力持續升溫。沒有一個部門可以同時照顧到，也沒有任何決策沒有代價。
+  <div class="callout">
+    <div class="callout-label">設計精神</div>
+    本遊戲刻意不把公式告訴你，因為真實的決策者從來不是拿著試算表治理國家。你需要從GM的簡報中讀懂訊號，在多重壓力下做出判斷。對台灣處境越有理解，你的決策就會越有方向。
   </div>
 
-  <!-- 章一：遊戲目的 -->
+  <!-- CH1 開始遊戲 -->
   <div class="chapter">
-    <div class="chapter-num">CHAPTER 01</div>
-    <h2>遊戲目的與結束條件</h2>
+    <span class="chapter-num">CH · 01</span>
+    <h2>開始遊戲</h2>
   </div>
-
-  <p>身為中華民國最高統帥，你的核心任務是在內外交迫的環境下維持國家正常運作，同時追求長遠的國家發展。遊戲沒有固定終點，以達成勝利條件或觸發失敗條件為結束。</p>
 
   <div class="section">
-    <h3>三條勝利路徑</h3>
-    <div class="vic-grid">
-      <div class="vic-card">
-        <div class="vic-icon">🏛️</div>
-        <div class="vic-name">長期穩定勝利</div>
-        <div class="vic-req">連續12個月維持高聲望、充裕資源、繁榮經貿、社會穩定，並有效管控地緣風險</div>
+    <h3>一、遊戲設定</h3>
+    <p>GM讀取規則後，將以「總統府秘書長」口吻向你致敬，並詢問以下設定，請依序回答：</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">推演背景</div>
+          <div class="flow-desc">設定時代背景、世界觀（可沿用現實時間線，或自訂架空情境）與陣營立場。</div>
+        </div>
       </div>
-      <div class="vic-card">
-        <div class="vic-icon">⚔️</div>
-        <div class="vic-name">軍事決定性勝利</div>
-        <div class="vic-req">在戰時（日制）模式下成功擊退敵軍、完成關鍵軍事目標，迫使對方撤退或談和</div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">執政風格</div>
+          <div class="flow-desc">
+            選擇一種起始風格，影響三大派系（在野、軍方、財閥）的初始滿意度：<br><br>
+            ・<strong>強硬派</strong>：軍方+10 / 在野−10 / 財閥−5<br>
+            ・<strong>改革派</strong>：在野+10 / 財閥+5 / 軍方−10<br>
+            ・<strong>穩健派</strong>：三方各±3以內<br>
+            ・<strong>親商派</strong>：財閥+15 / 軍方−5 / 在野−5<br>
+            ・<strong>自訂</strong>：三方偏移總量≤±20
+          </div>
+        </div>
       </div>
-      <div class="vic-card">
-        <div class="vic-icon">📈</div>
-        <div class="vic-name">經濟繁榮勝利</div>
-        <div class="vic-req">在財富、人力、經貿、聲望等經濟指標上達到頂峰水準，成為富強國家</div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-dot">3</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">起始模式</div>
+          <div class="flow-desc">選擇從月制（和平時期治理）或日制（戰時狀態）開始推演。</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-dot">4</div><div class="flow-line" style="background:transparent"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">難度</div>
+          <div class="flow-desc">選擇推演難度（詳見下方說明）。</div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <h3>遊戲立即結束的情況</h3>
-    <p>以下任一情況觸發，遊戲即宣告失敗：</p>
-    <table class="faction-table">
-      <tr>
-        <th>失敗類型</th>
-        <th>觸發條件</th>
-      </tr>
-      <tr>
-        <td>聲望歸零</td>
-        <td>執政合法性完全喪失，政府垮台</td>
-      </tr>
-      <tr>
-        <td>人力耗盡</td>
-        <td>軍事力量與行政能量完全崩潰</td>
-      </tr>
-      <tr>
-        <td>資源長期匱乏</td>
-        <td>財富或物資連續三個月歸零（平時）</td>
-      </tr>
-      <tr>
-        <td>憲政崩潰</td>
-        <td>憲政危機指數達到臨界值而未處理</td>
-      </tr>
-      <tr>
-        <td>主權淪喪</td>
-        <td>首都陷落、戰線全面崩潰，或接受統一談判</td>
-      </tr>
-      <tr>
-        <td>政府癱瘓</td>
-        <td>綏靖崩潰狀態持續十回合未解除</td>
-      </tr>
-      <tr>
-        <td>內戰╱政變</td>
-        <td>強行維持戒嚴導致民主與在野信任歸零</td>
-      </tr>
-    </table>
-  </div>
+    <h3>二、難度選擇</h3>
+    <p>難度決定你所處國家的初始資源、訓練程度與地緣壓力。越高的難度，所有指標的起點越低，結構性壓力越重，可用的戰略空間也越窄。</p>
 
-  <!-- 章二：雙軌模式 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 02</div>
-    <h2>雙軌模式：月制與日制</h2>
-  </div>
-
-  <p>遊戲分為兩種運作模式，對應不同的國家狀態。兩種模式使用不同的部門體制、時間尺度與決策節奏。</p>
-
-  <div class="section">
-    <h3>月制（國家經營模式）</h3>
-    <p>每個回合代表一個月，是遊戲的常態模式。玩家以行政院六大部門為工具，推動政策、外交、經濟與防務建設。</p>
-
-    <div class="dept-grid">
-      <div class="dept-card">
-        <div class="dept-name">🛡️ 國安會</div>
-        <div class="dept-scope">國防大政、外交方針、兩岸策略、國家安全決策諮詢</div>
+    <div class="diff-grid">
+      <div class="diff-card easy">
+        <div class="diff-name">簡單</div>
+        <div class="diff-desc">資源充裕的小型民主國家。訓練度高、量能充足，適合初次體驗。</div>
       </div>
-      <div class="dept-card">
-        <div class="dept-name">⚖️ 內政與法務部</div>
-        <div class="dept-scope">社會治安、反間諜、穩定度管理、教育政策</div>
+      <div class="diff-card normal">
+        <div class="diff-name">一般</div>
+        <div class="diff-desc">面對複雜地緣壓力的中等民主國家。所有指標均衡，考驗全面管理能力。</div>
       </div>
-      <div class="dept-card">
-        <div class="dept-name">💰 經濟與財政部</div>
-        <div class="dept-scope">財政收入、產業投資、能源政策、財閥關係</div>
+      <div class="diff-card hard">
+        <div class="diff-name">困難</div>
+        <div class="diff-desc">資源緊繃、高度依賴外部支持的前線國家。財政餘裕極小，需要精準取捨。</div>
       </div>
-      <div class="dept-card">
-        <div class="dept-name">⚔️ 國防與海委會</div>
-        <div class="dept-scope">兵力人力、軍方關係、後備動員、灰色地帶應處</div>
+      <div class="diff-card hell">
+        <div class="diff-name">地獄</div>
+        <div class="diff-desc">幾乎無戰略縱深的極端壓力情境。任何失誤都可能引發連鎖崩潰。</div>
       </div>
-      <div class="dept-card">
-        <div class="dept-name">🌐 外交與陸委會</div>
-        <div class="dept-scope">外交指數、地緣緊張管控、國際援助、兩岸談判</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-name">📡 數發與交通部</div>
-        <div class="dept-scope">物資管理、基礎建設、通訊韌性、認知作戰反制</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>日制（防衛作戰模式）</h3>
-    <p>當地緣緊張度達到100%、或玩家宣布戒嚴，遊戲進入日制。每個回合代表一天的作戰時程，部門切換為聯合作戰參謀體制。</p>
-
-    <div class="dept-grid">
-      <div class="dept-card war">
-        <div class="dept-name">👥 聯一</div>
-        <div class="dept-scope">兵力補員、人事、軍紀</div>
-      </div>
-      <div class="dept-card war">
-        <div class="dept-name">🔍 聯二</div>
-        <div class="dept-scope">敵情研判、情報、戰時外交</div>
-      </div>
-      <div class="dept-card war">
-        <div class="dept-name">🗺️ 聯三</div>
-        <div class="dept-scope">作戰規劃、兵力調度、聯合指揮</div>
-      </div>
-      <div class="dept-card war">
-        <div class="dept-name">📦 聯四</div>
-        <div class="dept-scope">後勤、彈藥補給、裝備保修</div>
-      </div>
-      <div class="dept-card war">
-        <div class="dept-name">📻 聯五</div>
-        <div class="dept-scope">資安、通信、C4ISR統合</div>
-      </div>
-      <div class="dept-card war">
-        <div class="dept-name">📣 政戰</div>
-        <div class="dept-scope">心理戰、資訊戰、反認知作戰</div>
+      <div class="diff-card real">
+        <div class="diff-name">擬真</div>
+        <div class="diff-desc">台灣現實處境，含完整結構性壓力。每月各項指標自然衰退，專為具備政策知識的玩家設計。</div>
       </div>
     </div>
 
     <div class="callout warn">
-      <div class="callout-label">重要警示</div>
-      進入日制前的月制建設成果至關重要。各部門訓練度的平均值將成為日制初始戰力，平時積累的外交、資源、人力都會直接影響作戰能力。月制打得好，日制才有底氣。
+      <div class="callout-label">擬真模式特別說明</div>
+      擬真難度中，外交、經貿、在野滿意度每月自動衰退，且與中、美有關的兩個經貿與戰略隱藏指標亦會持續影響全局。這不是一個能靠「打好所有數字」通關的難度，你需要對台灣真實的結構性困境有一定認識，才能找到正確的應對策略。
     </div>
   </div>
 
-  <!-- 章三：每回合流程 -->
+  <!-- CH2 核心資源 -->
   <div class="chapter">
-    <div class="chapter-num">CHAPTER 03</div>
-    <h2>每回合流程：三階段</h2>
+    <span class="chapter-num">CH · 02</span>
+    <h2>三大核心資源</h2>
   </div>
 
-  <p>每個回合嚴格分為三個階段，依序進行，不可跳過或合併。</p>
+  <p>遊戲中有三種直接影響存亡的核心資源。每種資源歸零都有嚴重懲罰，長期歸零則直接導致遊戲結束。GM每回合會在狀態表中顯示各資源的當前值與趨勢。</p>
+
+  <div class="section">
+    <h3>一、財富 Wealth</h3>
+    <p>代表國家財政健康程度。每月從經貿與聲望換算出歲入，扣除固定支出後得到淨變動。戰時額外增加軍事支出。</p>
+    <div class="callout warn">
+      <div class="callout-label">財富歸零警告</div>
+      財富歸零時，在野滿意度大幅下滑，經貿每月額外衰退。財政崩潰是所有敗局中最常見的導火線，務必在出現赤字趨勢時儘早處理。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>二、物資 Supplies</h3>
+    <p>代表國家的戰略物資與生產能力儲備。月制下每月有基本產能補充，但也有基礎消耗，長期呈現結構性赤字是常態——玩家必須透過主動行動補充物資，而非被動等待。每季（3、6、9、12月）有季收補充。</p>
+    <p>日制時，後方持續向前線撥補物資，但若北部或南部作戰區遭敵占領超過3格，後方補給能力將大幅削減。</p>
+    <div class="callout tip">
+      <div class="callout-label">V3.06 新增</div>
+      V3.06 新增「國際戰略物資交易系統」，允許統帥以財富向國際市場換取物資，或於緊急時將物資逆向變現為財富，詳見第四章。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>三、人力 Manpower</h3>
+    <p>以百分比表示現役兵力相對於法定編制的比例。100%代表滿編，可透過動員超編提升至上限150%。平時自然持平，但穩定度過低時會因士氣低落、逃兵等因素自然下滑。</p>
+    <div class="callout">
+      <div class="callout-label">人力維持費</div>
+      維持現有人力每月需要支付對應的財富與物資作為維持費用。人力越高，維持費越高；缺員至70%以下，軍方滿意度每月持續扣分。
+    </div>
+  </div>
+
+  <!-- CH3 五大指標 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 03</span>
+    <h2>五大動態指標</h2>
+  </div>
+
+  <p>五大指標持續變動，彼此相互影響，並透過「均值回歸」機制維持動態平衡。指標的高低直接影響各種行動的成效與資源收入。</p>
+
+  <div class="indicator-grid">
+    <div class="ind-card">
+      <div class="ind-name">聲望</div>
+      <div class="ind-en">PRESTIGE</div>
+      <div class="ind-desc">影響財富歲入與物資季收。聲望歸零直接導致遊戲結束。每月受經貿影響自動修正。</div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-name">經貿</div>
+      <div class="ind-en">TRADE</div>
+      <div class="ind-desc">影響所有資源的產出效率。也會透過均值回歸機制影響聲望走向。</div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-name">民主</div>
+      <div class="ind-en">DEMOCRACY</div>
+      <div class="ind-desc">影響立法院否決率。民主越高，法案越難強行通過；越低，則憲政危機風險上升。</div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-name">外交</div>
+      <div class="ind-en">DIPLOMACY</div>
+      <div class="ind-desc">影響國際援助與盟軍支援。也會每月影響經貿與地緣緊張度走向。</div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-name">穩定度</div>
+      <div class="ind-en">STABILITY</div>
+      <div class="ind-desc">由三大派系滿意度平均得出，影響人力變動與物資產能，是國家體質的綜合反映。</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">均值回歸機制</div>
+    所有指標都有自動回歸正常值的傾向，但這不代表你可以放任不管——結構性壓力（尤其在困難與擬真難度）會持續將指標往下拉，玩家必須以主動行動對抗這個趨勢。
+  </div>
+
+  <div class="section">
+    <h3>三大派系滿意度</h3>
+    <p>在野陣營、軍事將領、財閥產業三個派系各有獨立的滿意度，影響不同面向的懲罰機制：</p>
+
+    <table class="faction-table">
+      <tr><th>派系</th><th>滿意度過低的後果</th><th>維持建議</th></tr>
+      <tr>
+        <td><strong>在野陣營</strong></td>
+        <td>觸發杯葛抗爭與違憲審查，憲政危機累積加速</td>
+        <td>定期執行朝野協商行動</td>
+      </tr>
+      <tr>
+        <td><strong>軍事將領</strong></td>
+        <td>國防部門及日制聯參成功率大幅下降</td>
+        <td>確保國防預算不遭刪減，定期表態重視軍事</td>
+      </tr>
+      <tr>
+        <td><strong>財閥產業</strong></td>
+        <td>經貿每月額外衰退，且懲罰隨滿意度下滑而加重</td>
+        <td>推動產業政策，避免過度施壓財界</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>地緣緊張度</h3>
+    <p>地緣緊張度反映兩岸軍事衝突的臨界程度。超過95%時，物資消耗倍增；達到100%時，自動觸發月制→日制切換，進入防衛作戰模式。</p>
+  </div>
+
+  <!-- CH4 交易系統 NEW -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 04</span>
+    <h2>國際戰略物資交易系統 <span class="new-tag">V3.06 NEW</span></h2>
+  </div>
+
+  <p>統帥可指示<strong>經濟與財政部</strong>（月制）或<strong>聯四</strong>（日制）執行「國際戰略物資採購」，以財富向國際市場與友盟換取關鍵物資；或在財富告急時，將囤積物資逆向變現為財富。這是緩解財富與物資不均衡的核心手段。</p>
+
+  <div class="callout tip">
+    <div class="callout-label">系統定位</div>
+    這個系統是「多一條活路」，不是「萬靈丹」。難度越高，國際友盟對你的處境越有體諒，交換條件反而越優惠——正確運用可在困難及擬真難度下有效降低資源壓力，但不能取代對核心指標的主動經營。
+  </div>
+
+  <div class="section">
+    <h3>一、正向交換（財富→物資）</h3>
+    <p>每月/每10日可執行1次，消耗1 AP，可與一般行政行動合併。實際獲得物資量受多重指標影響：外交是最重要的因素，其次是經貿、聲望與民主。</p>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>正向交換</span>
+        <span class="trade-dir">財富 → 物資</span>
+      </div>
+      <div class="trade-box-body">
+        <strong>各難度交換條件一覽：</strong>
+        <table class="faction-table" style="margin-top:10px;">
+          <tr><th>難度</th><th>交換效率補償</th><th>手續費率</th><th>單次投入上限</th></tr>
+          <tr><td>簡單</td><td>基準值</td><td>8%</td><td>150</td></tr>
+          <tr><td>一般</td><td>基準值</td><td>6%</td><td>120</td></tr>
+          <tr><td>困難</td><td>+補償</td><td>4%</td><td>100</td></tr>
+          <tr><td>地獄</td><td>+大幅補償</td><td>2%</td><td>90</td></tr>
+          <tr><td>擬真</td><td>+小幅補償</td><td>3%</td><td>80</td></tr>
+        </table>
+        <p style="margin-top:10px;font-size:13px;color:#555;">難度越高，系統給予的效率補償越多、手續費越低，抵銷初始指標偏低造成的劣勢。</p>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <div class="callout-label">困難/地獄/擬真 專屬加成</div>
+      當外交指數≥100且本回合執行正向交易時，有15%機率觸發「國際友盟物資互助」，本次交換效率額外提升且手續費全免。這是友盟對高壓處境的特殊關照。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>二、反向交換（物資→財富，應急閥）</h3>
+    <p>當財富告急但物資尚有餘裕時，可將物資逆向變現。反向交換的效率低於正向（基準約六成），且手續費額外加收，設計上僅作為應急之用，不鼓勵頻繁操作。</p>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>反向交換</span>
+        <span class="trade-dir">物資 → 財富</span>
+      </div>
+      <div class="trade-box-body">
+        反向手續費 ＝ 正向手續費 ＋ 3%（懲罰性加收）<br>
+        單次物資投入上限：簡單60 / 一般50 / 困難45 / 地獄・擬真40
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>三、冷卻機制與使用限制</h3>
+    <p>正向與反向交換<strong>共用每月1次行動名額</strong>，同回合不可雙向同時執行。任一方向執行後，另一方向需間隔2回合（月制）或20天（日制）才可執行，防止來回套利。</p>
+  </div>
+
+  <div class="section">
+    <h3>四、風險事件</h3>
+    <p>每次交易完成後，GM會擲骰判定是否發生市場風險事件：</p>
+
+    <table class="faction-table">
+      <tr><th>結果</th><th>效果</th></tr>
+      <tr><td>供應鏈中斷（低機率）</td><td>實際獲得量大幅縮水，並額外損失部分對方資源</td></tr>
+      <tr><td>價格波動</td><td>實際獲得量在±20%範圍內隨機浮動</td></tr>
+      <tr><td>正常交割</td><td>依計算值正常獲得</td></tr>
+      <tr><td>超額交割</td><td>實際獲得量額外增加15~25%</td></tr>
+      <tr><td>外交/聲望加成（低機率）</td><td>額外獲得外交與聲望小幅提升</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>五、進階模式</h3>
+    <h4>期貨鎖定合約</h4>
+    <p>建立為持續任務，預先鎖定大額採購總量（150~400財富），每回合穩定取得固定物資。合約期間不可執行單次正向交易。完成後額外獲得經貿與外交加成；中斷則已投入財富全數不返還，並損失聲望。</p>
+
+    <h4>日制緊急採購</h4>
+    <p>戰時消耗1次統帥自主行動，立即換取物資，效率略低於月制正向交換，但附帶外交損耗與憲政危機累積，屬於高代價的緊急手段。</p>
+  </div>
+
+  <!-- CH5 立法 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 05</span>
+    <h2>立法院與憲政危機</h2>
+  </div>
+
+  <p>月制中，重大法案、軍購案、特別預算、修憲與戒嚴宣告，都必須經過立法院表決。GM依公式計算否決率後擲骰，否決率受在野滿意度與聲望影響——在野越不滿、聲望越低，法案就越難通過。</p>
+
+  <div class="section">
+    <h3>一、三種法案類型</h3>
+    <table class="faction-table">
+      <tr><th>法案類型</th><th>適用情境</th><th>通過難度</th></tr>
+      <tr><td><strong>一般法案</strong></td><td>多數重大政策、預算案</td><td>依在野滿意度與聲望動態計算</td></tr>
+      <tr><td><strong>修憲案</strong></td><td>修改憲法條文</td><td>需要在野大幅支持，否決率極高</td></tr>
+      <tr><td><strong>戒嚴案</strong></td><td>宣布戒嚴（觸發月→日切換）</td><td>受地緣緊張度影響，危機越深反而越容易通過</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>二、動態國會危機</h3>
+    <p>當聲望過低，或同時滿足穩定度與聲望雙低門檻時，所有法案的否決率將鎖定在高位，形成立法僵局。此時Bypass代價也會加重。</p>
+  </div>
+
+  <div class="section">
+    <h3>三、Bypass（強行通過）</h3>
+    <p>當法案被否決但統帥仍須推進時，可以選擇「Bypass」強行通過，代價是民主指數下滑、在野滿意大幅扣分，以及憲政危機累積。</p>
+    <div class="callout warn">
+      <div class="callout-label">憲政危機 ≥ 95</div>
+      憲政危機累積到臨界值而未能及時化解，將直接觸發遊戲結束。過度依賴Bypass是最快走向這個結局的路徑。
+    </div>
+  </div>
+
+  <!-- CH6 行動系統 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 06</span>
+    <h2>行動系統：AP 與部門量能</h2>
+  </div>
+
+  <p>每回合你有固定數量的「行動點（AP）」可以分配給各部門執行行動。AP多寡由聲望決定，聲望越高，每回合可用的AP越多。</p>
+
+  <div class="section">
+    <h3>一、部門分工</h3>
+    <p><strong>月制六大部門：</strong>國安會、內政與法務部、經濟與財政部、國防與海委會、外交與陸委會、數發與交通部。每個部門各有專責領域，行動效果取決於部門當前的訓練度與量能。</p>
+    <p><strong>日制六大聯參：</strong>聯一（人事）、聯二（情報）、聯三（作戰）、聯四（後勤）、聯五（資安通訊）、政戰（心理戰）。切換為日制後部門自動轉換，訓練度由月制帶入。</p>
+  </div>
+
+  <div class="section">
+    <h3>二、行動類型</h3>
+    <table class="faction-table">
+      <tr><th>行動</th><th>消耗</th><th>說明</th></tr>
+      <tr><td>一般行政</td><td>AP 1</td><td>單一部門執行標準政務行動</td></tr>
+      <tr><td>跨部會專案</td><td>AP 2</td><td>需要多部門協調的大型行動</td></tr>
+      <tr><td>訓練【排他】</td><td>AP 1</td><td>提升訓練度，本回合不可執行其他行動</td></tr>
+      <tr><td>休息【排他】</td><td>AP 1</td><td>回復量能，本回合不可執行其他行動</td></tr>
+      <tr><td>持續任務【排他】</td><td>AP 1</td><td>推進長期進行中的任務</td></tr>
+      <tr><td>統帥自主行動</td><td>AP 2</td><td>每回合限1次，由統帥親自主導，成功率受聲望影響</td></tr>
+      <tr><td>動員擴編（僅聯三）</td><td>AP 1</td><td>日制限定，提升人力但有失敗風險</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>三、持續任務</h3>
+    <p>超過三回合的重大事項必須建立「持續任務卡」，明確記錄工期、每回合預算與完成效果。GM會在每回合階段一簡報持續任務的進度。中途中斷任務，已投入資源不返還，且可能觸發負面事件。</p>
+    <div class="callout tip">
+      <div class="callout-label">國防長期投資</div>
+      國防與海委會可提議執行大型國防採購案（如新式戰機、潛艦、防空飛彈、特戰訓練等），完成後在日制階段帶來關鍵戰力加成。這些投資需要數回合才能完成，且通常需要外交與SAI指數達到門檻，是月制最重要的長期戰略投資之一。
+    </div>
+  </div>
+
+  <!-- CH7 回合流程 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 07</span>
+    <h2>每回合流程</h2>
+  </div>
+
+  <p>每回合嚴格分為三個階段，GM不得調換或略過任何內容。</p>
 
   <div class="flow">
     <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">一</div>
-        <div class="flow-line"></div>
-      </div>
+      <div class="flow-left"><div class="flow-dot">一</div><div class="flow-line"></div></div>
       <div class="flow-content">
-        <div class="flow-title">簡報（Briefing）</div>
+        <div class="flow-title">階段一：情勢簡報（Briefing）</div>
         <div class="flow-desc">
-          GM自動完成本月資源結算、事件觸發，並向玩家報告當前局勢：政治、經濟、軍事、外交的全面狀況，以及持續任務的進度。<br><br>
-          若本回合觸發<strong>特別事件</strong>，GM會公布事件名稱與預期影響，並詢問玩家是否採取回應行動。<br><br>
-          最後呈現<strong>永久狀態表</strong>，並詢問統帥本回合意圖。
+          GM自動結算上回合所有數值（資源增減、維持費、均值回歸、持續任務進度等），呈現當前全般狀況簡報：政治、經濟、軍事、民心現況，以及最近的重大歷史事件摘要。<br><br>
+          若本回合有特別事件觸發，GM會公布事件名稱與預期效果區間，詢問你是否本回合採取回應行動。最後更新並顯示永久狀態表，詢問你本回合的行動意圖。
         </div>
       </div>
     </div>
-
     <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">二</div>
-        <div class="flow-line"></div>
-      </div>
+      <div class="flow-left"><div class="flow-dot">二</div><div class="flow-line"></div></div>
       <div class="flow-content">
-        <div class="flow-title">行動方案（Action Planning）</div>
+        <div class="flow-title">階段二：行動方案（Action Planning）</div>
         <div class="flow-desc">
-          GM依據局勢，為<strong>所有六個部門</strong>各提出一項最佳行動建議（含當前量能與消耗），並列出各部門可選項：<br><br>
-          ・執行建議行動<br>
-          ・改為訓練【排他】<br>
-          ・改為休息【排他】<br>
-          ・繼續持續任務【排他】<br>
-          ・待機（量能自然回復）<br><br>
-          統帥閱覽所有建議後，逐一裁量每個部門的行動。確認後進入階段三。
+          GM必須為所有部門各生成一個當前情勢下的最佳行動建議，並標注量能與AP消耗。你就每個部門裁量：執行建議行動、改為訓練、改為休息、執行持續任務，或待機。<br><br>
+          統帥自主行動須由你主動提出。確認所有裁量後，GM執行合法性檢查，確認AP與資源足夠後進入階段三。
         </div>
       </div>
     </div>
-
     <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">三</div>
-        <div class="flow-line" style="background:transparent"></div>
-      </div>
+      <div class="flow-left"><div class="flow-dot">三</div><div class="flow-line" style="background:transparent"></div></div>
       <div class="flow-content">
-        <div class="flow-title">結算（Resolution）</div>
+        <div class="flow-title">階段三：結算（Resolution）</div>
         <div class="flow-desc">
-          GM依各部門訓練度擲骰判定行動成敗，結算所有效果，更新永久狀態表。特別事件效果亦在此階段結算。判定勝負條件後，自動進入下一回合。
+          GM對所有行動逐一判定成功或失敗（依各部門訓練度擲骰），計算所有資源變動，結算持續任務進度，處理特別事件效果，最後進行勝負判定。
         </div>
       </div>
     </div>
   </div>
 
   <div class="callout">
-    <div class="callout-label">排他鎖規則</div>
-    執行「訓練」或「休息」的部門，當回合絕對不可執行其他任何行動，GM會主動攔截。這是不可妥協的機制。
+    <div class="callout-label">特別事件回應規則</div>
+    選擇回應特別事件，你的對應部門會在階段二生成反制行動選項；不回應，則事件效果在階段三全額結算。有時主動回應代價比接受事件更高，判斷「要不要接這個球」本身就是關鍵決策。
   </div>
 
-  <!-- 章四：指令下達 -->
+  <!-- CH8 如何下達指令 -->
   <div class="chapter">
-    <div class="chapter-num">CHAPTER 04</div>
+    <span class="chapter-num">CH · 08</span>
     <h2>如何下達指令</h2>
   </div>
 
@@ -957,500 +1050,116 @@
     </div>
   </div>
 
-  <!-- 章五：核心數據 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 05</div>
-    <h2>核心數據與相互影響</h2>
+  <div class="section">
+    <h3>情境六：指示國際戰略物資交易 <span class="new-tag">V3.06</span></h3>
+    <div class="example">
+<span class="prompt">【統帥指令】</span><br>
+請經濟與財政部評估目前財富<br>
+與物資餘裕，若交換乘數合理，<br>
+執行一次國際戰略物資採購。<br>
+<br>
+<span class="comment">// 財富↔物資雙向兌換，需支付手續費</span><br>
+<span class="comment">// 同一方向每月/每10日限1次</span><br>
+<span class="comment">// 執行後另一方向需間隔2回合/20天冷卻</span>
+    </div>
   </div>
 
-  <p>遊戲中所有數值構成一個互相牽連的系統。理解各指標的意義與彼此的影響關係，是有效治理的基礎。</p>
+  <!-- CH9 月制→日制 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 09</span>
+    <h2>雙軌切換：從治理到作戰</h2>
+  </div>
 
   <div class="section">
-    <h3>三大核心資源</h3>
-    <div class="indicator-grid">
-      <div class="ind-card">
-        <div class="ind-name">💰 國庫財富</div>
-        <div class="ind-en">WEALTH</div>
-        <div class="ind-desc">政府財政能量。用於支付部門行動、維持軍隊、推動政策。每月有固定歲入與歲出，行動皆有消耗。歸零後聲望與經貿均遭受重創。</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-name">📦 戰略物資</div>
-        <div class="ind-en">SUPPLIES</div>
-        <div class="ind-desc">軍事與民生物資儲備。每季有一次補充，日制作戰時消耗加速。物資枯竭將直接衝擊聲望並觸發重大危機。</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-name">👥 人力</div>
-        <div class="ind-en">MANPOWER</div>
-        <div class="ind-desc">軍事編制滿編率（100%=滿編，上限150%）。社會不穩定時人力自然流失；人力不足影響軍方滿意度；戰時直接轉化為可用兵力。</div>
-      </div>
-    </div>
+    <h3>一、月制→日制切換</h3>
+    <p>以下任一條件成立，即觸發切換，進入防衛作戰模式：</p>
+    <table class="faction-table">
+      <tr><th>觸發條件</th><th>說明</th></tr>
+      <tr><td>地緣緊張度達100%</td><td>長期外交壓力累積，戰爭自動爆發</td></tr>
+      <tr><td>綏靖戰略崩潰</td><td>四大指標同時跌至低位並持續惡化，共軍發出統一談判最後通牒</td></tr>
+      <tr><td>統帥主動宣布戒嚴</td><td>玩家決策主動觸發，走向完整戰時體制</td></tr>
+      <tr><td>統帥主動下令提升戰備 <span class="new-tag">V3.06</span></td><td>玩家決策主動觸發，走向較輕量的過渡體制（見下節）</td></tr>
+    </table>
+
+    <p>切換發生時，40%的現有人力被鎖定為戰區兵力，其餘60%留守後備；部門體制切換為聯參；月制已完成的國防投資項目全數帶入日制。</p>
 
     <div class="callout warn">
-      <div class="callout-label">資源警戒</div>
-      任一資源跌破10點即進入警戒狀態，聲望將遭受即時懲罰並觸發重大負面事件。財富或物資連續三個月歸零將直接導致遊戲結束。
+      <div class="callout-label">戒嚴追認（第30天強制觸發）</div>
+      宣布戒嚴後第30天，立法院強制進行戒嚴追認表決。<strong>通過</strong>：軍方滿意+15，地緣鎖定100%至日制結束。<strong>否決且被占方格&lt;3</strong>：被迫切回月制並承受大量政治懲罰（民主-20/聲望-25/憲政危機+30/地緣降至70%）。<strong>否決但被占方格≥3</strong>：共軍仍在島上、無法簡單切回月制，將轉入「緊急戰備狀態」（見下方說明）。若強行Bypass維持戒嚴，代價極為慘重，可能直接引發政變。
     </div>
   </div>
 
   <div class="section">
-    <h3>五大動態指標</h3>
-    <div class="indicator-grid">
-      <div class="ind-card">
-        <div class="ind-name">⭐ 聲望</div>
-        <div class="ind-en">PRESTIGE</div>
-        <div class="ind-desc">執政合法性的核心指標。影響每月財政收入、行動AP上限，以及立法院的配合程度。歸零即遊戲結束。</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-name">🏭 經貿</div>
-        <div class="ind-en">TRADE</div>
-        <div class="ind-desc">國家經濟活力。影響財富歲入與物資產能。受外交指數連動影響，外交強則經貿有正向加成，反之亦然。</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-name">🏛️ 民主</div>
-        <div class="ind-en">DEMOCRACY</div>
-        <div class="ind-desc">民主法治水準。主要影響立法院表決結果——民主越高，有利拉抬聲望，但法案審核越嚴格。使用Bypass強行通過法案則會大幅損傷民主。</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-name">🌐 外交</div>
-        <div class="ind-en">DIPLOMACY</div>
-        <div class="ind-desc">國際關係強度。影響經貿、地緣緊張度，並在戰時決定友盟援助等級。突破特定門檻解鎖不同層次的盟友支援。</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-name">🏘️ 穩定度</div>
-        <div class="ind-en">STABILITY</div>
-        <div class="ind-desc">由在野、軍方、財閥三方滿意度綜合計算。穩定度低落影響人力補充，極低時觸發各種危機事件。</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>三大派系滿意度</h3>
-    <p>這三個指標是國內政治穩定的支柱，各有不同的影響域與危機門檻：</p>
-    <table class="faction-table">
-      <tr>
-        <th>派系</th>
-        <th>主要影響</th>
-        <th>危機門檻</th>
-        <th>跌破後果</th>
-      </tr>
-      <tr>
-        <td><strong>在野陣營</strong></td>
-        <td>立法院合作意願、憲政危機成長速度</td>
-        <td class="danger">&lt; 60</td>
-        <td>杯葛抗爭、違憲審查、法案否決率上升</td>
-      </tr>
-      <tr>
-        <td><strong>軍事將領</strong></td>
-        <td>各部門任務成功率</td>
-        <td class="danger">&lt; 70</td>
-        <td>所有行動成功率顯著下降，且差距越大懲罰越重</td>
-      </tr>
-      <tr>
-        <td><strong>財閥產業</strong></td>
-        <td>每月經貿自然增減</td>
-        <td class="danger">&lt; 80</td>
-        <td>經貿每月額外下滑，且差距越大損失越重</td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="section">
-    <h3>地緣緊張度</h3>
-    <p>這是連接月制與日制的核心樞紐指標，代表台海軍事情勢的緊張程度。</p>
-
-    <div class="inf-map">
-      <div class="inf-title">地緣緊張度的影響鏈</div>
-      <div class="inf-row">
-        <div class="inf-node danger">地緣 &gt; 95%</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node resource">物資消耗 ×2</div>
-        <div class="inf-effect">後勤壓力倍增</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">地緣 = 100%</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node danger">強制切換日制</div>
-        <div class="inf-effect">戰爭爆發</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node">外交指數上升</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node resource">地緣緊張下降</div>
-        <div class="inf-effect">正向連動</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node">外交 &gt; 101</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node resource">日制友盟援助</div>
-        <div class="inf-effect">分梯次解鎖</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>數據連動示意</h3>
-    <p>以下呈現幾組重要的連鎖影響關係，幫助玩家建立全局思維：</p>
-
-    <div class="inf-map">
-      <div class="inf-title">聲望的中樞作用</div>
-      <div class="inf-row">
-        <div class="inf-node">聲望 ↑</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">財富歲入增加 ／ 物資季收增加 ／ AP上限提升 ／ 法案通過率上升 ／ 統帥行動成功率提升</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">聲望 ↓</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">財政收縮 ／ 外交下滑 ／ 動態國會危機觸發門檻降低</div>
-      </div>
-    </div>
-
-    <div class="inf-map">
-      <div class="inf-title">外交的雙向槓桿</div>
-      <div class="inf-row">
-        <div class="inf-node">外交 &gt; 100</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">每月為經貿帶來正向加成</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">外交 &lt; 100</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">每月為地緣緊張帶來負向加壓</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node">外交 101–115</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node resource">日制物資撥補+3</div>
-        <div class="inf-effect">第一梯次援助</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node">外交 116–130</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node resource">敵電子戰效果減半</div>
-        <div class="inf-effect">第二梯次援助</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node">外交 &gt; 130</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-node resource">盟軍空中支援</div>
-        <div class="inf-effect">第三梯次援助</div>
-      </div>
-    </div>
-
-    <div class="inf-map">
-      <div class="inf-title">在野滿意度的政治生態</div>
-      <div class="inf-row">
-        <div class="inf-node">在野 ↑ 且聲望 ↑</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">法案否決率降低，重大政策容易推動</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">在野 &lt; 60</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">杯葛抗爭 ／ 憲政危機累積加速</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">在野 &lt; 50</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">每月憲政危機自動上升</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 章六：AP與量能 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 06</div>
-    <h2>行動點數（AP）與部門量能</h2>
-  </div>
-
-  <p>每個回合統帥擁有有限的行動點數（AP），用來驅動各部門執行任務。AP的多寡與當前聲望正相關——聲望越高，每回合可做越多事。</p>
-
-  <div class="section">
-    <h3>AP的視覺概念</h3>
-    <p>聲望100時的典型AP上限示意（每個方格代表1 AP）：</p>
-    <div class="ap-bar">
-      <div class="ap-pip used">1</div>
-      <div class="ap-pip used">2</div>
-      <div class="ap-pip used">3</div>
-      <div class="ap-pip used">4</div>
-      <div class="ap-pip used">5</div>
-      <div class="ap-pip used">6</div>
-      <div class="ap-pip">7</div>
-      <div class="ap-pip">8</div>
-    </div>
-    <div class="ap-label">聲望越高 → AP越多（最高8點）。聲望不足時可能只有4點。</div>
-  </div>
-
-  <div class="section">
-    <h3>各種行動的AP消耗</h3>
-    <table class="faction-table">
-      <tr>
-        <th>行動類型</th>
-        <th>AP消耗</th>
-        <th>備注</th>
-      </tr>
-      <tr>
-        <td>一般行政</td>
-        <td>1</td>
-        <td>常規部門政策推動</td>
-      </tr>
-      <tr>
-        <td>跨部會專案</td>
-        <td>2</td>
-        <td>兩個部門聯合行動，效果較強</td>
-      </tr>
-      <tr>
-        <td>訓練【排他】</td>
-        <td>1</td>
-        <td>提升訓練度與量能上限，本回合不可做其他事</td>
-      </tr>
-      <tr>
-        <td>休息【排他】</td>
-        <td>1</td>
-        <td>回復量能，消耗財富與物資，本回合不可做其他事</td>
-      </tr>
-      <tr>
-        <td>持續任務【排他】</td>
-        <td>1</td>
-        <td>推進長期工程，本回合不可做其他事</td>
-      </tr>
-      <tr>
-        <td>統帥自主行動</td>
-        <td>2</td>
-        <td>每回合限一次，由統帥親自主導，成功率與聲望掛鉤</td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="section">
-    <h3>部門量能</h3>
-    <p>每個部門有獨立的量能值，代表該部門的工作餘裕。每次行動都會消耗量能；量能耗盡的部門若繼續強行行動，效果將打折或失敗。</p>
+    <h3>二、提升戰備狀態（月制→日制的另一條路） <span class="new-tag">V3.06</span></h3>
+    <p>「提升戰備」是比戒嚴更輕量的行政裁量，不需要立法院表決，也不會觸發第30天的戒嚴追認。適合地緣壓力升高但尚未走到攤牌時刻的過渡選擇。</p>
 
     <div class="callout">
-      <div class="callout-label">量能管理要點</div>
-      ・量能上限初始為12，每次成功訓練可提升上限+1（最高20）<br>
-      ・未行動的待機部門每回合自動回復+2量能（不超過上限）<br>
-      ・休息可一次性大量回復量能，但需消耗財富與物資<br>
-      ・長期高強度行動必然導致量能耗盡，需規劃休整週期
+      <div class="callout-label">體制限制與退場機制</div>
+      量能上限降為月制上限的80%；在野滿意度每月自動-3，作為維持備戰狀態的政治成本。地緣緊張度降至100%以下時，統帥可隨時下令解除，無懲罰接續切回月制。<br><br>
+      但若地緣持續升溫並觸及100%，將自動升格為完整戒嚴體制——套用標準月制→日制切換步驟，第30天仍須進行戒嚴追認表決。
     </div>
-  </div>
 
-  <!-- 章七：長期任務 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 07</div>
-    <h2>持續任務系統</h2>
-  </div>
-
-  <p>任何需要超過三個回合才能完成的政策，都必須以正式任務卡的形式追蹤，不得口頭帶過。GM會自動建立任務卡並每回合報告進度。</p>
-
-  <div class="section">
-    <h3>任務卡範例</h3>
-    <div class="mission-card">
-      <table>
-        <tr><td>任務名稱</td><td><strong>全社會防衛韌性建設計畫</strong></td></tr>
-        <tr><td>執行部門</td><td>內政與法務部（主）／數發與交通部（協）</td></tr>
-        <tr><td>統帥代行</td><td>否</td></tr>
-        <tr><td>總工期</td><td>6回合</td></tr>
-        <tr><td>剩餘工期</td><td>5回合</td></tr>
-        <tr><td>每回合預算</td><td>財富 -4 ／ 物資 -2</td></tr>
-        <tr><td>當前進度</td><td>15%</td></tr>
-        <tr><td>完成效果</td><td>穩定度永久提升、災害事件負面效果降低、解鎖全民防衛路徑加速條件</td></tr>
-        <tr><td>中斷懲罰</td><td>已投入資源不返還；可能觸發「政策跳票」負面事件</td></tr>
-      </table>
-    </div>
+    <p>換句話說，提升戰備狀態是一個「可以隨時喊停」的備戰選項；一旦情勢真正失控觸頂，它會自動被戒嚴體制取代，該面對的政治表決終究要面對。</p>
   </div>
 
   <div class="section">
-    <h3>任務進度影響因素</h3>
-    <p>每回合的進度推進速度並非固定，受以下因素影響：</p>
-    <p>負責部門的<strong>訓練度越高</strong>，每回合進度推進越快；資源充裕且環境穩定時亦有加成。反之，若執行部門量能不足，或同回合遭遇負面事件干擾，進度可能停滯甚至退縮。</p>
+    <h3>三、緊急戰備狀態（戒嚴追認否決、但共軍仍未撤退時） <span class="new-tag">V3.06</span></h3>
+    <p>這是V3.06新增的「卡在中間」狀態：立法院已經否決戒嚴延續，但戰場上共軍仍占有相當方格數（≥3格），國家無法簡單地假裝戰爭結束、直接切回月制治理。</p>
 
     <div class="callout warn">
-      <div class="callout-label">中斷風險</div>
-      持續任務一旦中斷，所有已投入的財富與物資一概不予退還，並可能觸發額外的負面事件。啟動長期任務前，請確認資源與AP在未來數回合內的可持續性。
+      <div class="callout-label">體制限制</div>
+      量能上限降為月制上限的60%；統帥自主行動成功率-15%；盟軍空中支援觸發率打7折。每10天自動：憲政危機+5、聲望-3、在野滿意-5。地緣緊張度維持100%不降。
     </div>
-  </div>
 
-  <!-- 章八：訓練與成長 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 08</div>
-    <h2>訓練、成長與部門能力</h2>
-  </div>
-
-  <p>部門的訓練度決定每次行動的基礎成功率。訓練度越高，行動成功的機率越大，效果也越穩定。</p>
-
-  <div class="section">
-    <h3>訓練的基本邏輯</h3>
-    <p>對部門執行「訓練」行動，成功後可提升該部門5%訓練度，同時永久擴大量能上限+1。這是提升長期執政能力最穩健的投資方式，但需要佔用一個回合的排他行動。</p>
-
-    <div class="callout tip">
-      <div class="callout-label">策略建議</div>
-      訓練度的提升是複利效應：訓練度高的部門，未來每次行動成功率都更高，連帶提升整體治理效率。建議在局勢允許的早期積極安排訓練，避免在危機中才倉皇補強。
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>行動成功率的構成</h3>
-    <p>每次行動成功與否，以部門當前訓練度為基礎機率擲骰決定（成功率上限80%）。以下因素會影響實際成功率：</p>
-    <p>軍方滿意度不足時，所有部門的行動成功率將受到懲罰，且差距越大、懲罰越重。反之，日制中軍隊士氣高昂，亦可為作戰行動帶來額外加成。</p>
-  </div>
-
-  <!-- 章九：立法院 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 09</div>
-    <h2>立法院與法案表決</h2>
-  </div>
-
-  <p>重大法案、軍購、特別預算、修憲與戒嚴宣告，均須經立法院表決。法案是否通過取決於多個政治指標的綜合狀態。</p>
-
-  <div class="section">
-    <h3>影響法案通過率的因素</h3>
-    <p>以下三個指標與一般法案的否決率有關，但並非完全正比，民主指數越高代表越嚴格審查，但在野越支持就越容易通過，聲望則是綜合因素：</p>
-    <p><strong>民主指數</strong>、<strong>在野滿意度</strong>、<strong>聲望</strong>——三者共同構成立法院的政治溫度。審慎評估這三項指標，是確保重大政策能夠推行的長期工程。</p>
-
-    <div class="callout warn">
-      <div class="callout-label">Bypass 強行通過的代價</div>
-      當法案表決失敗，玩家可選擇強行Bypass（行政命令強制執行），但代價極為沉重：民主指數大幅下降、在野滿意驟跌、憲政危機顯著上升。濫用Bypass是通往遊戲失敗最快速的路徑之一。
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>動態國會危機</h3>
-    <p>當聲望極低，或同時面臨低穩定度與低聲望時，立法院將進入「動態國會危機」狀態，所有法案的否決率固定鎖死在極高水準，幾乎所有提案都將遭到否決。這是政府在立法上的全面癱瘓。</p>
-  </div>
-
-  <!-- 章十：特別事件 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 10</div>
-    <h2>特別事件與應對</h2>
-  </div>
-
-  <p>每個回合均有機率觸發隨機特別事件，涵蓋政治、經濟、軍事、民心、外交各類別。事件的觸發不由玩家控制，但<strong>玩家可以選擇是否回應</strong>。</p>
-
-  <div class="section">
-    <h3>事件處理流程</h3>
-    <p>階段一簡報時，GM會公布事件名稱與預期效果範圍，詢問玩家是否在本回合採取回應行動。若選擇回應，GM會在階段二為對應部門生成反制選項；若不回應，事件在階段三以原始效果全額結算。</p>
-
-    <div class="callout tip">
-      <div class="callout-label">反事件機制</div>
-      若事件的觸發條件與你當回合的行動高度相關，且對應行動成功，GM可能將其轉為「化解事件」——原有負面效果取消，甚至轉化為正向效果。這代表積極的施政本身就是最好的危機預防。
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>常見事件類型</h3>
+    <p>統帥每3個作戰回合可重新提出戒嚴案，套用標準戒嚴案否決率公式：</p>
     <table class="faction-table">
-      <tr>
-        <th>類別</th>
-        <th>典型事件</th>
-        <th>對應部門</th>
-      </tr>
-      <tr>
-        <td>政治</td>
-        <td>在野杯葛、修憲爭議、憲法法庭審查</td>
-        <td>國安會、內政與法務部</td>
-      </tr>
-      <tr>
-        <td>經濟</td>
-        <td>半導體出口創高、能源衝擊、外資撤出</td>
-        <td>經濟與財政部</td>
-      </tr>
-      <tr>
-        <td>軍事</td>
-        <td>共軍演習、灰色地帶升溫、無人機侵擾</td>
-        <td>國防與海委會、國安會</td>
-      </tr>
-      <tr>
-        <td>民心</td>
-        <td>認知作戰攻勢、颱風災害、社會厭戰</td>
-        <td>數發與交通部、內政與法務部</td>
-      </tr>
-      <tr>
-        <td>外交</td>
-        <td>美日聯合聲明、邦交國斷交、中共打壓</td>
-        <td>外交與陸委會、國安會</td>
-      </tr>
+      <tr><th>重提結果</th><th>後續</th></tr>
+      <tr><td>通過</td><td>體制全數恢復正常戒嚴狀態，憲政危機不另外累加</td></tr>
+      <tr><td>再次否決</td><td>憲政危機額外+20；本次日制禁止再提戒嚴案；緊急戰備狀態持續</td></tr>
+    </table>
+
+    <p>脫離緊急戰備狀態的正常出路：共軍兵力&lt;50（觸發日制→月制切換）、或停火談判成功。</p>
+
+    <div class="callout" style="border-left-color:var(--red); background:#fdf0ee;">
+      <div class="callout-label" style="color:var(--red); opacity:1;">政府垮台風險</div>
+      緊急戰備狀態若持續超過15個作戰回合、且憲政危機達到80以上，將直接觸發「政府垮台」GameOver。這是提醒統帥：政治正當性破產與戰場僵局同時發生時，國家撐不了太久。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>四、日制→月制切換（結束作戰）</h3>
+    <p>以下任一條件成立，即觸發切換，結束日制進入戰後重建：</p>
+    <table class="faction-table">
+      <tr><th>觸發條件</th><th>說明</th></tr>
+      <tr><td>共軍兵力&lt;50</td><td>敵方渡海部隊喪失持續作戰能力</td></tr>
+      <tr><td>立法院否決戒嚴（被占方格&lt;3）</td><td>政治否決強制停戰</td></tr>
+      <tr><td>統帥主動解除戒嚴或恢復常態</td><td>玩家決策停止作戰/備戰</td></tr>
+      <tr><td>停火談判成功</td><td>累計完成5次停火談判（詳見下節）</td></tr>
     </table>
   </div>
 
-  <!-- 章十一：難度 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 11</div>
-    <h2>難度設定</h2>
-  </div>
-
-  <p>開局時可選擇五種難度，影響初始資源狀態、部門能力與地緣緊張程度。難度越高，各項指標的起點越低，結構性壓力越強。</p>
-
-  <div class="diff-row">
-    <div class="diff-label">簡單</div>
-    <div class="diff-desc">各項資源豐沛，部門能力較強，地緣壓力低。適合初次體驗流程的玩家。</div>
-  </div>
-  <div class="diff-row">
-    <div class="diff-label">一般</div>
-    <div class="diff-desc">標準起點，數值平衡，是感受遊戲核心張力的推薦選擇。</div>
-  </div>
-  <div class="diff-row">
-    <div class="diff-label hard">困難</div>
-    <div class="diff-desc">資源縮水、能力打折、地緣壓力升高，決策容錯率明顯降低。</div>
-  </div>
-  <div class="diff-row">
-    <div class="diff-label hell">地獄</div>
-    <div class="diff-desc">各項指標大幅削弱，地緣緊張已達70%，幾乎沒有從容建設的空間。</div>
-  </div>
-  <div class="diff-row">
-    <div class="diff-label real">擬真</div>
-    <div class="diff-desc">特殊初始結構，外交、民主、在野滿意均有獨立起點，且每月面臨多項自然衰退壓力。另有美國戰略模糊指數（SAI）等隱藏機制運作，最貼近現實的台灣處境。</div>
-  </div>
-
-  <div class="callout tip" style="margin-top:16px">
-    <div class="callout-label">擬真難度的獨特壓力</div>
-    擬真難度下，外交與在野滿意每月自然衰退，全社會防衛行動失敗還有額外的穩定度懲罰。對中經貿依存度也是一個隱藏指標，影響各類經濟衝擊事件的嚴重程度。
-  </div>
-
-  <!-- 章十二：國家編年史 -->
-  <div class="chapter">
-    <div class="chapter-num">CHAPTER 12</div>
-    <h2>國家編年史與發展路徑</h2>
-  </div>
-
-  <p>每當發生重大事件或玩家決策造成顯著的數值變動，GM會自動生成一筆歷史記錄，以客觀的史學角度描述事件的成因、影響與歷史意義。</p>
-
-  <p>你的每一個決策都在塑造這個國家的歷史，而非單純操作數字。編年史是你留給這段歷史的印記。</p>
-
   <div class="section">
-    <h3>國家發展路徑</h3>
-    <p>持續相同方向的政策投入五到七回合後，國家可能解鎖特定發展路徑，帶來持久性的加成效果：</p>
-    <table class="faction-table">
-      <tr>
-        <th>路徑</th>
-        <th>解鎖條件</th>
-        <th>長期效益</th>
-      </tr>
-      <tr>
-        <td>🛡️ 全民防衛國家</td>
-        <td>軍事投資、高穩定度、地緣壓力下持續強化國防</td>
-        <td>日制動員上限與人力上限提升</td>
-      </tr>
-      <tr>
-        <td>💻 科技立國</td>
-        <td>高經貿、高穩定度、持續科技投資</td>
-        <td>財富歲入與物資產能長期加成</td>
-      </tr>
-      <tr>
-        <td>🕊️ 民主燈塔</td>
-        <td>高民主、在野信任、長期不使用Bypass</td>
-        <td>憲政危機成長減緩、聲望更加穩健</td>
-      </tr>
-      <tr>
-        <td>⚙️ 戰時經濟</td>
-        <td>日制持續超過90天</td>
-        <td>物資產能大幅提升（但經貿受損）</td>
-      </tr>
-    </table>
+    <h3>五、停火談判機制 <span class="new-tag">V3.06</span></h3>
+    <p>日制中，當戰場情勢達到特定條件後，統帥可嘗試推動停火談判。談判是「邊打邊談」——戰場壓力越大，談判成功率越低；只有在真正壓制了對手的情況下，談判才會產生實質效果。</p>
+
+    <div class="callout">
+      <div class="callout-label">停火談判啟動條件（三類須同時成立）</div>
+      <strong>軍事：</strong>共軍兵力≤70；被占方格比例≤30%；最近3個有戰鬥回合內無新占領<br>
+      <strong>統帥：</strong>聲望≥90；本次日制統帥行動累計成功≥3次<br>
+      <strong>外交：</strong>外交指數116~130
+    </div>
+
+    <p>每回合消耗1次統帥自主行動名額進行談判擲骰。累計成功5次即達成停火。每次失敗，外交指數−1；若外交跌破116，談判中斷（已累計次數保留），待條件重新達標後可繼續。</p>
+
+    <div class="callout tip">
+      <div class="callout-label">設計哲學</div>
+      北京只認軍事現實。共軍兵力是談判成功率最核心的影響因素——打得越痛，談判才越有意義。聲望與外交只是加分，無法取代戰場上的真實壓制。
+    </div>
   </div>
 
-  <!-- 章十三：狀態表說明 -->
+  <!-- CH10 如何閱讀永久狀態表 -->
   <div class="chapter">
-    <div class="chapter-num">CHAPTER 13</div>
+    <span class="chapter-num">CH · 10</span>
     <h2>如何閱讀永久狀態表</h2>
   </div>
 
@@ -1476,311 +1185,368 @@
     <p><strong>國庫旁的月±X</strong>代表本月資源的淨增減，可判斷當前財政趨勢是否可持續。</p>
     <p><strong>部門量能</strong>極低時需安排休息，否則後續行動將受到嚴重限制。</p>
     <p><strong>地緣緊張度</strong>是整張狀態表中最需要持續追蹤的指標之一，它的上升是系統性威脅的先行信號。</p>
+    <p><strong>特殊狀態欄</strong>會顯示戒嚴、提升戰備狀態、緊急戰備狀態（含回合數與憲政危機值）、動態國會危機、綏靖崩潰等當前生效的體制標記——這欄空白代表你目前處於完全常態的治理環境。</p>
   </div>
 
-  <!-- 章十四：日制交戰規則 -->
+  <!-- CH11 日制作戰 -->
   <div class="chapter">
-    <div class="chapter-num">CHAPTER 14</div>
-    <h2>日制作戰區劃與交戰規則</h2>
+    <span class="chapter-num">CH · 11</span>
+    <h2>日制防衛作戰</h2>
   </div>
 
-  <p>進入日制後，戰場分為兩個層次：以<strong>直線九格</strong>為架構的海空交戰區，以及以<strong>四個九宮格</strong>為架構的地面作戰區。兩者緊密連動——海空格的控制決定敵方可對哪些地面九宮格發動登陸，而地面九宮格的得失直接影響後方補給線與失敗條件。所有交戰判定依階段三結算程序逐回合執行。</p>
-
   <div class="section">
-    <h3>一、海空交戰區：直線九格（北→南，格1～格9）</h3>
-    <p>海空交戰區是一條由北至南的直線，共九個格子，代表台海制海制空的縱深控制帶。敵方必須先在海空九格中取得連續的控制區段，才能對對應的地面九宮格發動登陸。我方的目標是阻止敵方建立連續占領區段，或盡可能縮短其區段長度。</p>
+    <h3>一、台灣海峽戰區全圖 <span class="new-tag">V3.06</span></h3>
+    <p>日制的戰場其實是三層疊在一起的空間：最外層是大陸沿岸的兵力集結與投送區，中間是掌控制海制空權的海空直線走廊，最內層才是台灣本島的地面攻防。三層環環相扣——大陸沿岸決定敵方能投送多少兵力，海空走廊決定投送到哪裡、能開啟哪個登陸區，地面九宮格才是真正決定勝負與國土完整的戰場。</p>
 
     <div class="inf-map">
-      <div class="inf-title">海空直線九格示意（北→南）</div>
-      <div style="display:flex;gap:4px;justify-content:center;flex-wrap:nowrap;margin:16px 0;">
-        <div style="background:#1b3a6b;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格1<br><span style="font-size:10px;opacity:0.7">北</span></div>
-        <div style="background:#1b3a6b;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格2</div>
-        <div style="background:#1b3a6b;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格3</div>
-        <div style="background:#2c5f9e;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格4</div>
-        <div style="background:#2c5f9e;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格5<br><span style="font-size:10px;opacity:0.7">中</span></div>
-        <div style="background:#2c5f9e;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格6</div>
-        <div style="background:#7b3030;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格7</div>
-        <div style="background:#7b3030;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格8</div>
-        <div style="background:#7b3030;color:#fff;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:12px;min-width:52px;">格9<br><span style="font-size:10px;opacity:0.7">南</span></div>
+      <div class="inf-title">1 · 大陸沿海目標區（敵方兵力來源，玩家不可占領）——由上至下＝由北至南</div>
+      <div style="display:flex; flex-direction:column; gap:16px; margin:16px 0;">
+
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          <div style="display:grid; grid-template-columns:repeat(2,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">丘陵</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">灘岸</div>
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">丘陵</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+          </div>
+          <div style="border-left:3px solid var(--red); padding-left:16px; flex:1; min-width:200px;">
+            <div style="font-weight:700; color:var(--blue-gov); font-size:16px; margin-bottom:4px;">北・浙江</div>
+            <div style="font-size:14px; color:#444; line-height:1.7;">啟動門檻：地緣緊張度&gt;80%<br>投送方向：北部、東部登陸走廊</div>
+          </div>
+        </div>
+
+        <div style="color:#c8bea8; font-size:16px; padding-left:44px;">↓</div>
+
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          <div style="display:grid; grid-template-columns:repeat(2,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">城鎮</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">丘陵</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">灘岸</div>
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+          </div>
+          <div style="border-left:3px solid var(--red); padding-left:16px; flex:1; min-width:200px;">
+            <div style="font-weight:700; color:var(--blue-gov); font-size:16px; margin-bottom:4px;">核心・福建</div>
+            <div style="font-size:14px; color:#444; line-height:1.7;">啟動門檻：地緣緊張度&gt;65%（三區最低）<br>投送方向：北部、中部——主攻方向</div>
+          </div>
+        </div>
+
+        <div style="color:#c8bea8; font-size:16px; padding-left:44px;">↓</div>
+
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          <div style="display:grid; grid-template-columns:repeat(2,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">丘陵</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">灘岸</div>
+            <div style="background:#7b3030; color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">平原</div>
+            <div style="background:var(--red); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.3;">軍港<br>機場</div>
+          </div>
+          <div style="border-left:3px solid var(--red); padding-left:16px; flex:1; min-width:200px;">
+            <div style="font-weight:700; color:var(--blue-gov); font-size:16px; margin-bottom:4px;">南・廣東</div>
+            <div style="font-size:14px; color:#444; line-height:1.7;">啟動門檻：地緣緊張度&gt;85%（三區最高）<br>投送方向：南部登陸備援</div>
+          </div>
+        </div>
+
       </div>
-      <p style="font-size:12px;color:#888;text-align:center;">▲ 深藍=北段；藍=中段；紅=南段。預設全為我方控制（藍色）。</p>
+      <p style="font-size:12px; color:#888; text-align:center; margin-top:8px;">▲ 每區左欄＝內陸（深紅）、右欄＝沿海（紅，含軍港機場，特種部隊主要目標）。三區不適用九宮格勝利條件，僅可透過遠程反制／特種滲透作戰癱瘓其補充能力。</p>
     </div>
 
-    <p><strong>海空格開啟登陸走廊的邏輯：</strong>敵方必須占領連續的海空格，連續占領格數 ÷ 2（捨去小數）即為可同時開啟的登陸區數量上限。對應關係如下：</p>
+    <div class="inf-map">
+      <div class="inf-title">2 · 海空直線九格（北→南，格1～格9）——由上至下＝由北至南</div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start; margin:16px 0;">
 
-    <table class="faction-table">
-      <tr>
-        <th>敵方占領之連續海空格</th>
-        <th>可開啟之地面九宮格</th>
-        <th>說明</th>
-      </tr>
-      <tr>
-        <td>格1＋格2 / 格2＋格3</td>
-        <td>北部九宮格＋東部九宮格</td>
-        <td>北段控制，威脅首都圈</td>
-      </tr>
-      <tr>
-        <td>格3＋格4</td>
-        <td>北部九宮格＋中部九宮格</td>
-        <td>北中過渡段</td>
-      </tr>
-      <tr>
-        <td>格4＋格5 / 格5＋格6</td>
-        <td>中部九宮格</td>
-        <td>中段控制</td>
-      </tr>
-      <tr>
-        <td>格6＋格7</td>
-        <td>中部九宮格＋南部九宮格</td>
-        <td>中南過渡段</td>
-      </tr>
-      <tr>
-        <td>格7＋格8 / 格8＋格9</td>
-        <td>南部九宮格＋東部九宮格</td>
-        <td>南段控制，威脅工業重鎮</td>
-      </tr>
-    </table>
+        <div style="display:flex; flex-direction:column; gap:3px; align-items:center;">
+          <div style="background:#1b3a6b;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格1<span style="font-size:10px;opacity:0.7"> 北</span></div>
+          <div style="background:#1b3a6b;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格2</div>
+          <div style="background:#1b3a6b;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格3</div>
+          <div style="background:#2c5f9e;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格4</div>
+          <div style="background:#2c5f9e;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格5<span style="font-size:10px;opacity:0.7"> 中</span></div>
+          <div style="background:#2c5f9e;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格6</div>
+          <div style="background:#7b3030;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格7</div>
+          <div style="background:#7b3030;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格8</div>
+          <div style="background:#7b3030;color:#fff;padding:8px 20px;text-align:center;font-family:var(--mono);font-size:12px;width:80px;">格9<span style="font-size:10px;opacity:0.7"> 南</span></div>
+        </div>
 
-    <div class="callout">
-      <div class="callout-label">登陸上限規則</div>
-      無論敵方在海空格占領多少區段，同時開啟的地面九宮格最多不超過三個。每個已開啟的九宮格，敵方每回合選擇1～2個方格發動登陸，GM依當前態勢決定投入兵力。
+        <div style="flex:1; min-width:240px;">
+          <p style="font-size:12px;color:#888; margin-bottom:10px;">▲ 深藍=北段；藍=中段；紅=南段。預設全為我方控制。連續占領格數÷2（捨去小數）＝可同時開啟的登陸九宮格上限，最多3個。</p>
+          <table class="faction-table">
+            <tr><th>敵占連續海空格（北→南）</th><th>可開啟之地面九宮格</th></tr>
+            <tr><td>格1＋格2 / 格2＋格3</td><td>北部＋東部九宮格（威脅首都圈）</td></tr>
+            <tr><td>格3＋格4</td><td>北部＋中部九宮格</td></tr>
+            <tr><td>格4＋格5 / 格5＋格6</td><td>中部九宮格</td></tr>
+            <tr><td>格6＋格7</td><td>中部＋南部九宮格</td></tr>
+            <tr><td>格7＋格8 / 格8＋格9</td><td>南部＋東部九宮格（威脅工業重鎮）</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="inf-map">
+      <div class="inf-title">3 · 台灣本島四大作戰區（各9格，預設全為我方控制）——菱形佈局，北上南下、中東並列</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-areas:'north north' 'central east' 'south south'; gap:20px 28px; justify-items:center; max-width:520px; margin:20px auto;">
+
+        <div style="grid-area:north; text-align:center;">
+          <div style="font-family:var(--sans); font-size:12px; font-weight:600; color:var(--blue-gov); margin-bottom:6px;">北部作戰區<br><span style="font-weight:400; color:#888; font-size:10px;">基隆/台北/新北/桃園/新竹/宜蘭</span></div>
+          <div style="display:grid; grid-template-columns:repeat(3,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">灘岸</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">丘陵</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">軍港<br>機場</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">河流</div>
+            <div style="background:var(--gold); color:#1a1a2e; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; font-weight:700;">城鎮<br>★中心</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">城鎮</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">丘陵</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">平原</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+          </div>
+          <div style="font-size:10px; color:#c0392b; margin-top:4px; font-weight:600;">首都圈所在，優先防守</div>
+        </div>
+
+        <div style="grid-area:central; text-align:center;">
+          <div style="font-family:var(--sans); font-size:12px; font-weight:600; color:var(--blue-gov); margin-bottom:6px;">中部作戰區<br><span style="font-weight:400; color:#888; font-size:10px;">苗栗/台中/彰化/南投/雲林</span></div>
+          <div style="display:grid; grid-template-columns:repeat(3,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">灘岸</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">丘陵</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">軍港<br>機場</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">城鎮</div>
+            <div style="background:var(--gold); color:#1a1a2e; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; font-weight:700;">平原<br>★中心</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">河流</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">密林</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+          </div>
+          <div style="font-size:10px; color:#999; margin-top:4px;">分割戰線的必爭之地</div>
+        </div>
+
+        <div style="grid-area:east; text-align:center;">
+          <div style="font-family:var(--sans); font-size:12px; font-weight:600; color:var(--blue-gov); margin-bottom:6px;">東部作戰區<br><span style="font-weight:400; color:#888; font-size:10px;">花蓮/台東</span></div>
+          <div style="display:grid; grid-template-columns:repeat(3,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">灘岸</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">軍港<br>機場</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+            <div style="background:var(--gold); color:#1a1a2e; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; font-weight:700;">平原<br>★中心</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">河流</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">密林</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+          </div>
+          <div style="font-size:10px; color:#999; margin-top:4px;">兩棲奇襲的潛在開啟區</div>
+        </div>
+
+        <div style="grid-area:south; text-align:center;">
+          <div style="font-family:var(--sans); font-size:12px; font-weight:600; color:var(--blue-gov); margin-bottom:6px;">南部作戰區<br><span style="font-weight:400; color:#888; font-size:10px;">嘉義/台南/高雄/屏東</span></div>
+          <div style="display:grid; grid-template-columns:repeat(3,44px); grid-template-rows:repeat(3,44px); gap:2px;">
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">灘岸</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">平原</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">平原</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">軍港<br>機場</div>
+            <div style="background:var(--gold); color:#1a1a2e; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center; font-weight:700;">城鎮<br>★中心</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">河流</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">丘陵</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">密林</div>
+            <div style="background:var(--blue-light); color:#fff; font-family:var(--mono); font-size:10px; display:flex; align-items:center; justify-content:center;">山地</div>
+          </div>
+          <div style="font-size:10px; color:#999; margin-top:4px;">工業重鎮，港口需重點看守</div>
+        </div>
+
+      </div>
+      <p style="font-size:12px; color:#888; text-align:center; margin-top:4px;">▲ 北部居上、中部與東部並列於中段、南部居下，貼近實際地理相對位置。金色標記為每區中央格（★）；方格狀態實際呈現為 🟦 我方控制／🟨 交戰中／🟥 敵方占領。</p>
     </div>
 
     <div class="callout warn">
-      <div class="callout-label">奪回海空格：切斷補給線</div>
-      若玩家奪回對應敵方登陸兵力的海空控制區，即切斷其補給線。此後，已登陸的敵方兵力每回合自動衰減 ×0.9，直至補給線重新打通為止。這是在地面防線吃緊時，反制已登陸兵力最有效的間接手段。
+      <div class="callout-label">九宮格「淪陷」判定條件——請務必牢記</div>
+      敵方只要達成以下任一條件，即攻克整個九宮格作戰區，防守方全面撤出該交戰區：<br>
+      <strong>① 占領中央格（★）＋外圍任意4格</strong>，或　<strong>② 占領外圍全部8格</strong>（不含中央格）。<br>
+      這代表中央格的價值不只是地形加成，而是戰略節點本身——只要中央格失守，敵方只需再拿下外圍任意4格就能拿下整個作戰區；若中央格仍在我方手中，敵方就必須啃下外圍全部8格才能取勝，防守難度大幅提高。
     </div>
-  </div>
-
-  <div class="section">
-    <h3>二、地面九宮格作戰區</h3>
-    <p>地面戰場共有<strong>北部、中部、南部、東部</strong>四個九宮格作戰區，每區各有9個方格，預設全數為我方控制（藍色）。敵方透過海空格開啟對應九宮格後，每回合對選定方格發動攻擊。方格狀態分為：🟦 我方控制、🟨 交戰中、🟥 敵方占領。</p>
 
     <div class="callout">
-      <div class="callout-label">敵方總兵力</div>
-      敵方初始總兵力為 <strong>100</strong>（擬真難度每10天額外增加+10）。GM負責將兵力分配至各交戰區；玩家的可用兵力為月制切換時鎖定的戰區人力（月制人力×40%），雙方每格最大投入為10單位，並會因為訓練度、戰場經營或地形而產生不同加成效果。
+      <div class="callout-label">切斷補給線</div>
+      若奪回對應敵方登陸兵力的海空控制格，即切斷其補給線——已登陸的敵軍每回合自動衰減，這是在地面防線吃緊時最有效的間接反制手段。
     </div>
 
-    <h3 style="margin-top:24px;">各作戰區地形分布（附錄五）</h3>
-    <p>每個九宮格的九個方格各有對應地形，GM結算時直接依地形修正值調整交戰骰。地形影響防禦骰成功率與損失計算，是兵力分配的核心考量。</p>
-
-    <table class="faction-table">
-      <tr>
-        <th>作戰區</th>
-        <th>涵蓋地域</th>
-        <th>[1]</th><th>[2]</th><th>[3]</th><th>[4]</th><th>[5]</th><th>[6]</th><th>[7]</th><th>[8]</th><th>[9]</th>
-      </tr>
-      <tr>
-        <td><strong>北部</strong></td>
-        <td style="font-size:12px;">基隆/台北/新北/桃園/新竹/宜蘭</td>
-        <td>灘岸</td><td>丘陵</td><td>軍港機場</td><td>河流</td><td>城鎮</td><td>城鎮</td><td>丘陵</td><td>平原</td><td>山地</td>
-      </tr>
-      <tr>
-        <td><strong>中部</strong></td>
-        <td style="font-size:12px;">苗栗/台中/彰化/南投/雲林</td>
-        <td>灘岸</td><td>丘陵</td><td>城鎮</td><td>平原</td><td>平原</td><td>河流</td><td>密林</td><td>山地</td><td>山地</td>
-      </tr>
-      <tr>
-        <td><strong>南部</strong></td>
-        <td style="font-size:12px;">嘉義/台南/高雄/屏東</td>
-        <td>灘岸</td><td>平原</td><td>平原</td><td>軍港機場</td><td>城鎮</td><td>河流</td><td>丘陵</td><td>密林</td><td>山地</td>
-      </tr>
-      <tr>
-        <td><strong>東部</strong></td>
-        <td style="font-size:12px;">花蓮/台東</td>
-        <td>灘岸</td><td>軍港機場</td><td>山地</td><td>山地</td><td>平原</td><td>山地</td><td>河流</td><td>密林</td><td>山地</td>
-      </tr>
-    </table>
-
-    <table class="faction-table" style="margin-top:12px;">
-      <tr>
-        <th>地形</th>
-        <th>防禦修正</th>
-        <th>特殊規則</th>
-      </tr>
-      <tr><td>灘岸／潮間帶</td><td>+0.02（完成防禦工事後升至+0.07）</td><td>敵方攻擊成功率較高；完成工事後可大幅提升</td></tr>
-      <tr><td>平原</td><td>−0.10</td><td>防守失敗時兵力損失提升至35%</td></tr>
-      <tr><td>丘陵／台地</td><td>+0.03</td><td>—</td></tr>
-      <tr><td>河流</td><td>+0.05</td><td>敵方攻擊失敗時兵力損失提升至80%</td></tr>
-      <tr><td>城鎮</td><td>+0.05</td><td>不論勝負，穩定度固定 −2／回合</td></tr>
-      <tr><td>密林／果園</td><td>+0.04</td><td>—</td></tr>
-      <tr><td>山地</td><td>+0.10</td><td>不論勝負，物資固定 −1／回合</td></tr>
-      <tr><td>軍港／機場</td><td>+0.06</td><td>被占領後後方撥補物資與財富永久降低20%</td></tr>
-      <tr><td>外島／離島要塞</td><td>+0.08</td><td>後勤物資支援+3強制失效；我方物資額外 −2／回合</td></tr>
+    <table class="faction-table" style="margin-top:16px;">
+      <tr><th>地形</th><th>防禦效果</th><th>特殊規則</th></tr>
+      <tr><td>山地</td><td>最強防禦加成</td><td>不論勝負物資固定消耗</td></tr>
+      <tr><td>軍港/機場</td><td>強防禦</td><td>被占後後方補給永久降低20%</td></tr>
+      <tr><td>城鎮</td><td>中等防禦</td><td>市區戰鬥持續損傷穩定度</td></tr>
+      <tr><td>河流</td><td>中等防禦</td><td>敵方攻擊失敗損失加重</td></tr>
+      <tr><td>密林</td><td>中等防禦</td><td>—</td></tr>
+      <tr><td>丘陵</td><td>輕微防禦</td><td>—</td></tr>
+      <tr><td>灘岸</td><td>基本防禦</td><td>完成工事加固後大幅提升</td></tr>
+      <tr><td>平原</td><td>無加成（甚至減損）</td><td>防守失敗兵力損失更重</td></tr>
     </table>
   </div>
 
   <div class="section">
-    <h3>三、方格交戰結算（階段三）</h3>
-    <p>每回合階段三，GM對所有🟨交戰中方格逐一結算。每格的交戰勝負以雙方<strong>判定分數</strong>比例擲骰決定：</p>
-
-    <div class="flow">
-      <div class="flow-step">
-        <div class="flow-left">
-          <div class="flow-dot">1</div>
-          <div class="flow-line"></div>
-        </div>
-        <div class="flow-content">
-          <div class="flow-title">計算雙方判定分數</div>
-          <div class="flow-desc">
-            每方判定分數 ＝ 投入兵力 × （1 ＋ 訓練加成 ＋ 士氣加成 ＋ 地形修正 ＋ 盟軍支援）<br><br>
-            各加成來源：<br>
-            ・<strong>訓練加成</strong>＝平日國防與海巡訓練度轉換<br>
-            ・<strong>士氣加成</strong>＝政戰如何維持及提升士氣<br>
-            ・<strong>地形修正</strong>＝依方格地形（見上表）；敵方攻擊時反向計入<br>
-            ・<strong>盟軍空中支援</strong>＝外交關係越好支援越多<br>
-          </div>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-left">
-          <div class="flow-dot">2</div>
-          <div class="flow-line"></div>
-        </div>
-        <div class="flow-content">
-          <div class="flow-title">依比例擲骰</div>
-          <div class="flow-desc">GM依雙方分數比例計算成功率後擲骰，產生本格當日結果。若雙方分數差距小於5%，視為<strong>膠著</strong>，雙方各損失10%兵力，並消耗物資 −1。</div>
-        </div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-left">
-          <div class="flow-dot">3</div>
-          <div class="flow-line" style="background:transparent"></div>
-        </div>
-        <div class="flow-content">
-          <div class="flow-title">結算損失</div>
-          <div class="flow-desc">
-            依結果套用損失比例：<br><br>
-            ・<strong>任一方攻擊/防守成功</strong>：兵力損失 −10%<br>
-            ・<strong>敵方攻擊失敗</strong>：敵方損失 −70%；敵方防守失敗：敵方損失 −50%<br>
-            ・<strong>我方攻擊/防守失敗</strong>：我方損失 −30%<br>
-            ・<strong>失敗方格狀態不變</strong>（攻擊失敗不代表對方取得方格）<br><br>
-            各地形特殊損失規則（見地形表）優先套用，與上述比例疊加。
-          </div>
-        </div>
-      </div>
-    </div>
+    <h3>二、共軍動向 <span class="new-tag">V3.06</span></h3>
+    <p>V3.06正式引入共軍行動準則，GM不會隨意決定敵方戰術，而是有其戰略深度及戰術邏輯，但在真實戰場上敵方永遠不會讓你知道他下一步打算做什麼，你只能透過聯二情報研析得到「敵可能行動研判」等經過情報過濾的態勢描述。</p>
 
     <div class="callout warn">
-      <div class="callout-label">九宮格勝利條件</div>
-      單一九宮格作戰區的勝負以「占領中心格＋外圍任意4格」或「外圍全部8格」為判定標準。達成其一，防守方撤出該作戰區，GM宣告該九宮格易手。反之，若我方能在對方達成此條件前守住，即視為成功守衛本區。
+      <div class="callout-label">統帥應留意的重點</div>
+      即便無法窺視敵人內心，仍有兩件事值得時刻放在心上：<br>
+      1. <strong>政經中樞的安全</strong>——首都圈一旦淪陷，將直接牽動政權存續與整場戰局的走向，任何態勢研判中若透露北部承壓加劇，都值得優先因應。<br>
+      2. <strong>海上補給線的爭奪</strong>——補給線的爭奪與維持往往比實際的攻防更具決定性。敵軍能否登陸、登陸後能否持續作戰，都取決於海空控制格的消長；換言之，奪回關鍵海空格切斷敵方補給線，是地面吃緊時最有效的間接反制手段。玩家也必須特別注意南北作戰區港口遭佔領可能導致的外來補給降低或中斷的情況。
+    </div>
+
+    <p>共軍每10日還可能觸發特殊行動，包括：飛彈精準打擊、心理戰廣播、假情報滲透、無人機蜂群、電子戰癱瘓C4ISR，以及兩棲奇襲東部（每場限1次）。這些行動的觸發與強度同樣由GM依現場態勢裁定，不會因統帥處境優劣而額外放水或加重。</p>
+  </div>
+
+  <div class="section">
+    <h3>三、共軍後方目標區 <span class="new-tag">V3.06</span></h3>
+    <p>共軍的兵力並非無限——其登陸部隊仰賴大陸沿岸三個作戰區持續投送與補充（詳見上方全圖）。這些作戰區本身不可被國軍占領，但統帥可透過特種部隊行動癱瘓其補充節奏，是牽制敵方攻勢強度的關鍵手段。</p>
+
+    <table class="faction-table">
+      <tr><th>作戰區</th><th>啟動門檻</th><th>投送方向</th><th>沿海目標</th><th>內陸目標</th></tr>
+      <tr>
+        <td><strong>北部・浙江</strong></td>
+        <td>地緣緊張度 &gt;80%</td>
+        <td>北部、東部登陸走廊</td>
+        <td>灘岸／軍港機場×2</td>
+        <td>丘陵／軍港機場／丘陵</td>
+      </tr>
+      <tr>
+        <td><strong>核心・福建</strong></td>
+        <td>地緣緊張度 &gt;65%</td>
+        <td>北部、中部（主攻方向）</td>
+        <td>軍港機場／灘岸／軍港機場</td>
+        <td>城鎮／丘陵／軍港機場</td>
+      </tr>
+      <tr>
+        <td><strong>南部・廣東</strong></td>
+        <td>地緣緊張度 &gt;85%</td>
+        <td>南部登陸備援</td>
+        <td>軍港機場／灘岸／軍港機場</td>
+        <td>軍港機場／丘陵／平原</td>
+      </tr>
+    </table>
+
+    <div class="callout tip">
+      <div class="callout-label">打擊價值</div>
+      各作戰區沿岸的軍港機場格是兵力集結與投送的樞紐，也是特種部隊行動的主要目標；福建作為核心作戰區，啟動門檻最低、投送方向最廣，通常是牽制優先度最高的一區。癱瘓沿岸目標可暫停對應作戰區的兵力補充能力，內陸目標則影響其後續整補節奏。
     </div>
   </div>
 
   <div class="section">
-    <h3>四、主要失敗觸發條件</h3>
-    <p>日制的失敗判定來自兩個層面，GM每回合必須明確回報：</p>
+    <h3>四、國軍特殊部隊行動</h3>
+    <p>日制中，統帥可調用以下特殊行動，針對上述共軍後方目標區打破僵局：</p>
 
     <table class="faction-table">
+      <tr><th>行動</th><th>執行部門</th><th>效果</th><th>限制</th></tr>
       <tr>
-        <th>條件</th>
-        <th>觸發說明</th>
-        <th>後果</th>
+        <td><strong>戰略情報偵察</strong></td>
+        <td>國安會/聯二</td>
+        <td>取得指定共軍作戰區的精準兵力集結資料（2回合內有效）</td>
+        <td>一次性財富消耗10</td>
       </tr>
       <tr>
-        <td><strong>主權淪喪①</strong></td>
-        <td>戰區人力降至日制初始值40%以下(40 x 40% = 16，前線兵力嚴重不足)，且敵占方格總數≥18</td>
-        <td class="danger">同時滿足→Game Over</td>
+        <td><strong>遠程反制作戰</strong></td>
+        <td>聯三</td>
+        <td>針對偵察標定之目標格實施打擊，暫停對應作戰區兵力補充能力3回合</td>
+        <td>每3回合1次，共5次；一次性物資消耗5</td>
       </tr>
       <tr>
-        <td><strong>主權淪喪②</strong></td>
-        <td>北部作戰區被敵方完整占領（含首都圈方格）</td>
-        <td class="danger">單獨滿足→Game Over</td>
-      </tr>
-      <tr>
-        <td><strong>聲望損失</strong></td>
-        <td>被占方格比例持續上升（日制→月制轉換時統合結算）</td>
-        <td>被占比10~50%：聲望漸損；>50%：聲望大幅懲罰</td>
-      </tr>
-      <tr>
-        <td><strong>後方補給降級</strong></td>
-        <td>北部或南部任一作戰區被敵占3格以上</td>
-        <td>後方撥補物資×0.5；兩者同時×0.25（海上封鎖效果）</td>
-      </tr>
-      <tr>
-        <td><strong>軍港機場失守</strong></td>
-        <td>含軍港/機場之方格被敵占領</td>
-        <td>後方撥補物資與財富永久降低20%</td>
+        <td><strong>特種滲透作戰</strong></td>
+        <td>聯三</td>
+        <td>針對沿海軍港機場格滲透，暫停對應作戰區兵力補充能力5回合，成功率較高</td>
+        <td>每3回合1次，共5次；預扣兵力3作代價，成功返還</td>
       </tr>
     </table>
   </div>
 
-  <div class="section">
-    <h3>五、軍隊士氣對作戰的影響</h3>
-    <p>日制士氣（初始80%，範圍0~120%）直接影響所有方格的交戰判定分數，是貫穿整個防衛作戰的隱性乘數。</p>
-
-    <div class="inf-map">
-      <div class="inf-title">士氣閾值效應</div>
-      <div class="inf-row">
-        <div class="inf-node">士氣 &gt; 80%</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">任務成功率 +(士氣−80)÷2%；AP上限最多+2（不突破8）</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">士氣 &lt; 50%</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">所有作戰成功率 −15%；戰損比例增加</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node danger">士氣 &lt; 30%</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">可能觸發潰敗事件，方格可能不經交戰即失守</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node">敵方政戰攻勢</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">士氣每10天 −5~15%</div>
-      </div>
-      <div class="inf-row">
-        <div class="inf-node resource">政戰／聯二反制</div>
-        <div class="inf-arrow">→</div>
-        <div class="inf-effect">士氣 +5~10%（對應部門成功時）</div>
-      </div>
-    </div>
+  <!-- CH12 勝利 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 12</span>
+    <h2>勝利條件</h2>
   </div>
 
-  <div class="section">
-    <h3>六、日制態勢呈現格式</h3>
-    <p>每回合階段一，GM以色塊符號呈現各作戰區當前方格狀態，供統帥快速判讀全局態勢。</p>
+  <p>共有三條截然不同的勝利路線，對應三種不同的執政與作戰風格。</p>
 
-    <div class="status-mock">
-<span class="header">【日制戰場態勢 — 第12天】</span>
-<span class="label">■ 海空九格：</span>
-<span class="value">🟦🟦🟦🟦🟦🟦</span><span class="warn-val">🟥🟥🟥</span>
-<span class="label">  格7~9已被敵占，南部九宮格登陸走廊開啟</span>
-
-<span class="label">■ 北部作戰區：</span><span class="value">🟦🟦🟦 🟦🟦🟦 🟦🟦🟦</span><span class="label"> 首都狀態：我方控制</span>
-<span class="label">■ 中部作戰區：</span><span class="value">🟦🟦🟦 🟦🟦🟦 🟦🟦🟦</span>
-<span class="label">■ 南部作戰區：</span><span class="value">🟨🟦🟦 🟦🟦🟦 🟦🟦🟦</span><span class="label"> ← [1]灘岸交戰中</span>
-<span class="label">■ 東部作戰區：</span><span class="value">🟦🟦🟦 🟦🟦🟦 🟦🟦🟦</span>
-
-<span class="label">■ 敵方總兵力：</span><span class="value">87 / 100</span>　<span class="label">我方戰區人力：</span><span class="value">38% / 初始40%</span>　<span class="warn-val">⚠ 人力偏低</span>
-<span class="label">■ 被占方格：</span><span class="value">1 / 全部方格</span>　<span class="label">被占比：</span><span class="value">2.7%</span>
+  <div class="victory-grid">
+    <div class="victory-card" data-icon="🏛">
+      <div class="victory-title">長期穩定勝利</div>
+      <div class="victory-cond">連續12個月同時達成：聲望≥160、三大資源均≥80、經貿≥140、穩定度≥120、地緣緊張度&lt;50%。以時間換空間，磨到對方放棄施壓。</div>
+    </div>
+    <div class="victory-card" data-icon="⚔️">
+      <div class="victory-title">軍事決定性勝利</div>
+      <div class="victory-cond">日制30回合內同時達成：共軍兵力&lt;50、聲望≥120、人力≥100。教科書級的島嶼防衛，在高聲望下幾乎全軍破敵，迫使共軍完全喪失再次發動侵略的能力。此為稀有高難度成就。</div>
+    </div>
+    <div class="victory-card" data-icon="📈">
+      <div class="victory-title">經濟繁榮勝利</div>
+      <div class="victory-cond">同時達成：財富≥600、人力≥150、經貿≥160、聲望≥150。讓侵略在戰略上失去意義——台灣的繁榮本身就是最有力的嚇阻。</div>
     </div>
   </div>
 
   <div class="callout tip">
-    <div class="callout-label">作戰統合要義</div>
-    海空九格與地面九宮格是一體兩面——守住海空格，就是在限制敵方可開啟的登陸走廊；守住地面方格，就是在保護後方補給線與戰略縱深。士氣、後勤、外交援助三者缺一不可，任何一條斷裂都會讓整個防線呈現多米諾效應。統帥必須在當日結算前清楚知道：最需要守住的是哪幾個方格，以及代價是否在可承受的範圍內。
+    <div class="callout-label">難度與勝利路線的關係</div>
+    地獄與擬真難度下，長期穩定勝利與經濟繁榮勝利的達成難度極高。主要可行路線為停火談判或軍事決定性勝利——前者要求真正壓制敵方，後者要求在30天內打出決定性成果。
   </div>
 
-  <div class="rule-line"></div>
+  <!-- CH11 失敗 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 13</span>
+    <h2>失敗條件</h2>
+  </div>
+
+  <p>任一條件成立即立即觸發遊戲結束。GM每回合必須明確追蹤以下狀態。</p>
+
+  <table class="faction-table">
+    <tr><th>失敗條件</th><th>觸發門檻</th></tr>
+    <tr><td>聲望歸零</td><td>聲望降至0</td></tr>
+    <tr><td>兵力耗盡</td><td>人力降至0且無法補充</td></tr>
+    <tr><td>資源斷絕</td><td>任一資源月制連續3月歸零；日制連續90日歸零</td></tr>
+    <tr><td>憲政危機失控</td><td>憲政危機≥95且未處理</td></tr>
+    <tr class="danger"><td>主權淪喪①</td><td>戰區人力降至初始值40%以下，且敵占方格≥18（兩條同時）</td></tr>
+    <tr class="danger"><td>主權淪喪②</td><td>北部作戰區被敵方完整占領（單獨觸發即結束）</td></tr>
+    <tr class="danger"><td>主權淪喪③④</td><td>綏靖崩潰狀態下主動解除戒嚴、否決戒嚴，或接受統一談判</td></tr>
+    <tr><td>政府癱瘓</td><td>綏靖崩潰狀態持續10回合未解除</td></tr>
+    <tr><td>內戰/政變</td><td>Bypass強行維持戒嚴後，民主與在野連續3回合雙雙歸零</td></tr>
+    <tr class="danger"><td>政府垮台 <span class="new-tag">V3.06</span></td><td>緊急戰備狀態（戒嚴追認否決但共軍仍占方格≥3）持續超過15個作戰回合，且憲政危機≥80</td></tr>
+  </table>
+
+  <!-- CH12 編年史 -->
+  <div class="chapter">
+    <span class="chapter-num">CH · 14</span>
+    <h2>國家編年史系統</h2>
+  </div>
+
+  <p>GM會在重大事件發生時，以史學角度為你的執政留下歷史紀錄，並於遊戲結束時生成完整的《XX年中華民國國家編年史》，以百科全書口吻記錄你的執政時長、重大政策、危機處理、戰爭紀錄與最終的歷史定位。</p>
+
+  <div class="callout tip">
+    <div class="callout-label">編年史的設計精神</div>
+    歷史只來自玩家的真實決策，不會被GM憑空捏造。每一次使用Bypass、每一場外交突破、每一場戰役的勝敗，都會成為編年史的一部分，讓每次遊玩都是獨特的台灣歷史切片。
+  </div>
+
+  <div class="section">
+    <h3>國家發展路徑</h3>
+    <p>若你在特定方向上持續投入5到7回合以上，系統會自動生成「國家發展路徑」，帶來對應的長期效果：</p>
+
+    <table class="faction-table">
+      <tr><th>發展路徑</th><th>啟動條件（概略）</th><th>效果</th></tr>
+      <tr><td>全民防衛國家</td><td>軍事投資持續6回合以上</td><td>動員上限提升，但經貿承壓</td></tr>
+      <tr><td>科技立國</td><td>科技投資持續6回合以上</td><td>財富歲入與物資產能提升</td></tr>
+      <tr><td>民主燈塔</td><td>12回合未使用Bypass</td><td>憲政危機成長減緩，聲望更穩定</td></tr>
+      <tr><td>戰時經濟</td><td>日制持續超過90天</td><td>物資產能大幅提升，但經貿受損</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-line">
 
   <div class="callout tip">
     <div class="callout-label">最後的話</div>
-  <p>台灣的處境，從來沒有容易的答案。</p>
-
-  <p>在野黨的訴求與軍方的需要往往相左，財閥的利益與長遠的國防佈局常常衝突，盟友的支持需要長期經營，而對手的壓力卻是每天都在累積。財政永遠不夠用，時間永遠不夠多，而局勢可以在任何一個你沒有防備的回合急轉直下。</p>
-
-  <p>本遊戲刻意不把公式告訴你，因為真正的決策者，從來不是拿著試算表在治理國家，你需要根據訊號判斷趨勢，根據經驗調整優先順序，在多重壓力下做出你認為最不壞的選擇。</p>
-
-  <p>有些玩法第一次遊玩不會想到，因為你對台灣真實處境的理解還不夠深，這沒有關係——每一次遊玩，都是一次思考台灣命運的機會。<br><br>
-
-    敬祝閣下推演順利。
+    <p>台灣的處境，從來沒有容易的答案。</p>
+    <p style="margin-top:10px;">在野黨的訴求與軍方的需要往往相左，財閥的利益與長遠的國防佈局常常衝突，盟友的支持需要長期經營，而對手的壓力卻是每天都在累積。財政永遠不夠用，時間永遠不夠多，而局勢可以在任何一個你沒有防備的回合急轉直下。</p>
+    <p style="margin-top:10px;">有些玩法第一次遊玩不會想到，因為你對台灣真實處境的理解還不夠深，這沒有關係——每一次遊玩，都是一次思考台灣命運的機會。</p>
+    <p style="margin-top:14px;">敬祝閣下推演順利。</p>
   </div>
 
   <div class="doc-footer">
-    <span>中華民國台灣模擬器 V3.05 ── 玩家使用說明書</span>
+    <span>中華民國台灣模擬器 V3.06 ── 玩家使用說明書</span>
     <span>Copyright © 2026 Kanon.Skywalker</span>
   </div>
 
