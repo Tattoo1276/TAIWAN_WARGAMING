@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0205)file:///C:/Users/kanon/Downloads/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E5%9C%8B%E5%AE%B6%E6%B2%BB%E7%90%86%E8%88%87%E9%98%B2%E8%A1%9B%E4%BD%9C%E6%88%B0V3_10%E4%BD%BF%E7%94%A8%E8%AA%AA%E6%98%8E%E6%9B%B8.html -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中華民國台灣模擬器 V3.06 — 玩家說明書</title>
+<title>中華民國台灣模擬器 V3.10 — 玩家說明書</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@300;400;500&family=Share+Tech+Mono&display=swap');
 
@@ -558,8 +558,8 @@
   <div class="cover-emblem">中華民國</div>
   <div class="cover-subtitle">Republic of China Strategic Simulation</div>
   <div class="cover-title">國家治理與<span>防衛作戰</span></div>
-  <div class="cover-ver">VERSION 3.06 — PLAYER MANUAL</div>
-  <div class="cover-new-badge">V3.06 新增：國際戰略物資交易系統 · 共軍行動準則 · 停火談判機制</div>
+  <div class="cover-ver">VERSION 3.10 — PLAYER MANUAL</div>
+  <div class="cover-new-badge">V3.10 新增：國會結構與憲政攻防系統 · 立委定期改選 · 總統罷免案</div>
   <div class="cover-doc-label">Player Reference Document</div>
 </div>
 
@@ -604,12 +604,12 @@
         <div class="flow-content">
           <div class="flow-title">執政風格</div>
           <div class="flow-desc">
-            選擇一種起始風格，影響三大派系（在野、軍方、財閥）的初始滿意度：<br><br>
-            ・<strong>強硬派</strong>：軍方+10 / 在野−10 / 財閥−5<br>
-            ・<strong>改革派</strong>：在野+10 / 財閥+5 / 軍方−10<br>
-            ・<strong>穩健派</strong>：三方各±3以內<br>
-            ・<strong>親商派</strong>：財閥+15 / 軍方−5 / 在野−5<br>
-            ・<strong>自訂</strong>：三方偏移總量≤±20
+            選擇一種起始風格，影響軍方、財閥兩大派系的初始滿意度（V3.10起，國會席次結構已獨立為單一數值，不再受執政風格影響，僅由難度設定）：<br><br>
+            ・<strong>強硬派</strong>：軍方+10 / 財閥−5<br>
+            ・<strong>改革派</strong>：財閥+5 / 軍方−10<br>
+            ・<strong>穩健派</strong>：兩方各±3以內<br>
+            ・<strong>親商派</strong>：財閥+15 / 軍方−5<br>
+            ・<strong>自訂</strong>：兩方偏移總量≤±20
           </div>
         </div>
       </div>
@@ -659,7 +659,7 @@
 
     <div class="callout warn">
       <div class="callout-label">擬真模式特別說明</div>
-      擬真難度中，外交、經貿、在野滿意度每月自動衰退，且與中、美有關的兩個經貿與戰略隱藏指標亦會持續影響全局。這不是一個能靠「精算所有數值」通關的難度，你需要對台灣真實的結構性困境有一定認識，才能找到正確的應對策略。
+      擬真難度中，外交、經貿、民主每月自動衰退，且與中、美有關的兩個經貿與戰略隱藏指標亦會持續影響全局。這不是一個能靠「精算所有數值」通關的難度，你需要對台灣真實的結構性困境有一定認識，才能找到正確的應對策略。
     </div>
   </div>
 
@@ -676,7 +676,7 @@
     <p>代表國家財政健康程度。每月從經貿與聲望換算出歲入，扣除固定支出後得到淨變動。戰時額外增加軍事支出。</p>
     <div class="callout warn">
       <div class="callout-label">財富歸零警告</div>
-      財富歸零時，在野滿意度大幅下滑，經貿每月額外衰退。財政崩潰是所有敗局中最常見的導火線，務必在出現赤字趨勢時儘早處理。
+      財富歸零時，民主指數大幅下滑，經貿每月額外衰退。財政崩潰是所有敗局中最常見的導火線，務必在出現赤字趨勢時儘早處理。
     </div>
   </div>
 
@@ -699,13 +699,13 @@
     </div>
   </div>
 
-  <!-- CH3 五大指標 -->
+  <!-- CH3 六大指標 -->
   <div class="chapter">
     <span class="chapter-num">CH · 03</span>
-    <h2>五大動態指標</h2>
+    <h2>六大動態指標</h2>
   </div>
 
-  <p>五大指標持續變動，彼此相互影響，並透過「均值回歸」機制維持動態平衡。指標的高低直接影響各種行動的成效與資源收入。</p>
+  <p>六大指標持續變動，彼此相互影響，並透過「均值回歸」機制維持動態平衡。指標的高低直接影響各種行動的成效與資源收入。</p>
 
   <div class="indicator-grid">
     <div class="ind-card">
@@ -721,7 +721,7 @@
     <div class="ind-card">
       <div class="ind-name">民主</div>
       <div class="ind-en">DEMOCRACY</div>
-      <div class="ind-desc">影響立法院否決率。民主越高，法案越難強行通過；越低，則憲政危機風險上升。</div>
+      <div class="ind-desc">影響立法院否決率，亦作為公民對政治體制滿意度之代理指標，驅動公民罷免潮觸發。民主越高，法案越難強行通過；越低，則憲政危機與罷免風險同步上升。</div>
     </div>
     <div class="ind-card">
       <div class="ind-name">外交</div>
@@ -733,6 +733,11 @@
       <div class="ind-en">STABILITY</div>
       <div class="ind-desc">由三大派系滿意度平均得出，影響人力變動與物資產能，是國家體質的綜合反映。</div>
     </div>
+    <div class="ind-card">
+      <div class="ind-name">國會結構</div>
+      <div class="ind-en">CONGRESS COMPOSITION <span class="new-tag">V3.10 NEW</span></div>
+      <div class="ind-desc">代表執政黨實質掌握之國會席次比例，是全遊戲唯一的「硬底盤」數值——不受一般協商或政策成效影響，僅能透過解散國會重新選舉、或立法委員定期改選才會改變。所有立法院否決率公式，現在都以此數值為核心變因。</div>
+    </div>
   </div>
 
   <div class="callout">
@@ -741,15 +746,15 @@
   </div>
 
   <div class="section">
-    <h3>三大派系滿意度</h3>
-    <p>在野陣營、軍事將領、財閥產業三個派系各有獨立的滿意度，影響不同面向的懲罰機制：</p>
+    <h3>三大派系與國會結構</h3>
+    <p>軍事將領、財閥產業兩個派系仍以傳統滿意度追蹤；<strong>在野陣營的角色，V3.10起已由「國會結構」這個硬底盤數值取代</strong>——你不再能靠協商暫時安撫在野，國會席次比例才是決定一切政治攻防的根本：</p>
 
     <table class="faction-table">
-      <tr><th>派系</th><th>滿意度過低的後果</th><th>維持建議</th></tr>
+      <tbody><tr><th>派系／數值</th><th>過低的後果</th><th>維持建議</th></tr>
       <tr>
-        <td><strong>在野陣營</strong></td>
-        <td>觸發杯葛抗爭與違憲審查，憲政危機累積加速</td>
-        <td>定期執行朝野協商行動</td>
+        <td><strong>國會結構</strong>（取代在野陣營）</td>
+        <td>結構越傾向在野，法案否決率越高，且可能觸發國會不信任案、公民罷免潮等憲政攻防機制（詳見第五章）</td>
+        <td>唯有解散國會重選、或立委定期改選能改變此數值；日常施政應著重憲政危機管理，而非奢望協商能扭轉結構</td>
       </tr>
       <tr>
         <td><strong>軍事將領</strong></td>
@@ -761,7 +766,12 @@
         <td>經貿每月額外衰退，且懲罰隨滿意度下滑而加重</td>
         <td>推動產業政策，避免過度施壓財界</td>
       </tr>
-    </table>
+    </tbody></table>
+
+    <div class="callout tip">
+      <div class="callout-label">V3.10 設計校準</div>
+      這項修訂源自現實觀察：近年台灣的朝野協商多流於形式，對法案通過率或在野基本盤幾乎無實質影響。V3.10將「朝野協商」重新定位為緩解憲政危機溫度的手段，而非改變政治結構的工具——結構性的政治現實，只有選票能夠翻轉。
+    </div>
   </div>
 
   <div class="section">
@@ -794,13 +804,13 @@
       <div class="trade-box-body">
         <strong>各難度交換條件一覽：</strong>
         <table class="faction-table" style="margin-top:10px;">
-          <tr><th>難度</th><th>交換效率補償</th><th>手續費率</th><th>單次投入上限</th></tr>
+          <tbody><tr><th>難度</th><th>交換效率補償</th><th>手續費率</th><th>單次投入上限</th></tr>
           <tr><td>簡單</td><td>基準值</td><td>8%</td><td>150</td></tr>
           <tr><td>一般</td><td>基準值</td><td>6%</td><td>120</td></tr>
           <tr><td>困難</td><td>+補償</td><td>4%</td><td>100</td></tr>
           <tr><td>地獄</td><td>+大幅補償</td><td>2%</td><td>90</td></tr>
           <tr><td>擬真</td><td>+小幅補償</td><td>3%</td><td>80</td></tr>
-        </table>
+        </tbody></table>
         <p style="margin-top:10px;font-size:13px;color:#555;">難度越高，系統給予的效率補償越多、手續費越低，抵銷初始指標偏低造成的劣勢。</p>
       </div>
     </div>
@@ -837,13 +847,13 @@
     <p>每次交易完成後，GM會擲骰判定是否發生市場風險事件：</p>
 
     <table class="faction-table">
-      <tr><th>結果</th><th>效果</th></tr>
+      <tbody><tr><th>結果</th><th>效果</th></tr>
       <tr><td>供應鏈中斷（低機率）</td><td>實際獲得量大幅縮水，並額外損失部分對方資源</td></tr>
       <tr><td>價格波動</td><td>實際獲得量在±20%範圍內隨機浮動</td></tr>
       <tr><td>正常交割</td><td>依計算值正常獲得</td></tr>
       <tr><td>超額交割</td><td>實際獲得量額外增加15~25%</td></tr>
       <tr><td>外交/聲望加成（低機率）</td><td>額外獲得外交與聲望小幅提升</td></tr>
-    </table>
+    </tbody></table>
   </div>
 
   <div class="section">
@@ -861,16 +871,16 @@
     <h2>立法院與憲政危機</h2>
   </div>
 
-  <p>月制中，重大法案、軍購案、特別預算、修憲與戒嚴宣告，都必須經過立法院表決。GM依公式計算否決率後擲骰，否決率受在野滿意度與聲望影響——在野越不滿、聲望越低，法案就越難通過。</p>
+  <p>月制中，重大法案、軍購案、特別預算、修憲與戒嚴宣告，都必須經過立法院表決。GM依公式計算否決率後擲骰，否決率的核心變因是<strong>國會結構</strong>與聲望——執政黨席次越少、聲望越低，法案就越難通過。</p>
 
   <div class="section">
     <h3>一、三種法案類型</h3>
     <table class="faction-table">
-      <tr><th>法案類型</th><th>適用情境</th><th>通過難度</th></tr>
-      <tr><td><strong>一般法案</strong></td><td>多數重大政策、預算案</td><td>依在野滿意度與聲望動態計算</td></tr>
-      <tr><td><strong>修憲案</strong></td><td>修改憲法條文</td><td>需要在野大幅支持，否決率極高</td></tr>
+      <tbody><tr><th>法案類型</th><th>適用情境</th><th>通過難度</th></tr>
+      <tr><td><strong>一般法案</strong></td><td>多數重大政策、預算案</td><td>依國會結構與聲望動態計算</td></tr>
+      <tr><td><strong>修憲案</strong></td><td>修改憲法條文</td><td>需要國會結構大幅偏向執政黨，否決率極高</td></tr>
       <tr><td><strong>戒嚴案</strong></td><td>宣布戒嚴（觸發月→日切換）</td><td>受地緣緊張度影響，危機越深反而越容易通過</td></tr>
-    </table>
+    </tbody></table>
   </div>
 
   <div class="section">
@@ -880,10 +890,81 @@
 
   <div class="section">
     <h3>三、Bypass（強行通過）</h3>
-    <p>當法案被否決但統帥仍須推進時，可以選擇「Bypass」強行通過，代價是民主指數下滑、在野滿意大幅扣分，以及憲政危機累積。</p>
+    <p>當法案被否決但統帥仍須推進時，可以選擇「Bypass」強行通過，代價是民主指數下滑，以及憲政危機累積（國會結構不受Bypass直接影響，這是硬底盤數值的代價：你無法用政治手段強行說服選票已經投出的席次分布）。</p>
     <div class="callout warn">
       <div class="callout-label">憲政危機 ≥ 95</div>
-      憲政危機累積到臨界值而未能及時化解，將直接觸發遊戲結束。過度依賴Bypass是最快走向這個結局的路徑。
+      憲政危機累積到臨界值而未能及時化解，將直接觸發遊戲結束。過度依賴Bypass是最快走向這個結局的路徑。V3.10起，憲政危機達到90分時，若同時符合特定條件，會先觸發「總統罷免案」作為最後攤牌（詳見下方說明），而非直接倒數衝向95。
+    </div>
+  </div>
+
+  <!-- CH5.5 憲政攻防機制群 V3.10 NEW -->
+  <div class="section">
+    <h3>四、憲政攻防機制群 <span class="new-tag">V3.10 NEW</span></h3>
+    <p>V3.10最大的結構性修訂：國會結構這個硬底盤數值一旦長期偏向在野，會觸發一連串你無法迴避的政治攻防事件。這些機制多數由GM自動判定觸發，你不需要、也無法主動操作何時發生——你能做的，是透過長期施政表現，決定自己在這些攤牌時刻站在哪一邊。</p>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>撤換行政院長</span>
+        <span class="trade-dir">統帥自主行動</span>
+      </div>
+      <div class="trade-box-body">
+        當國會結構偏向在野、民主指數又偏低時，你可以主動選擇犧牲行政院長來平息政治壓力。這是你在憲政攻防中<strong>唯一能主動出手</strong>的手段，但每次使用後有20回合的冷卻，且失敗代價相當沉重（聲望重挫、穩定度下降、憲政危機不減反增），並必定觸發「內閣改組磨合期」，讓所有部門訓練度暫時下滑。這不是一顆可以隨便按的按鈕，而是政治豪賭。
+      </div>
+    </div>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>國會不信任案</span>
+        <span class="trade-dir">自動觸發</span>
+      </div>
+      <div class="trade-box-body">
+        當國會結構明顯偏向在野、且民主指數持續偏低時，在野陣營會自動醞釀倒閣行動，不需要你的任何操作。一旦通過，你會被詢問是否要解散國會、重新選舉——這是全遊戲唯一能主動改變國會結構的兩條路徑之一（另一條是任期中的定期改選）。選擇不解散，你會保住現有結構，但代價是這個機制可能一再自動重演，長期施政不力的總統，可能被反覆倒閣，直到憲政秩序徹底崩潰。
+      </div>
+    </div>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>總統罷免案</span>
+        <span class="trade-dir">核選項 · 最終攤牌</span>
+      </div>
+      <div class="trade-box-body">
+        這是全遊戲最嚴苛的政治事件，比照中華民國史上僅有的兩次總統罷免提案（均未通過門檻）設計：立法院提案門檻極高，通過後還須經公民複決，複決過半才會真正成功。V3.10將此機制設計為<strong>憲政危機瀕臨爆表（達到90分）時的最後攤牌</strong>——與其讓危機悄悄滑向95後遊戲乾巴巴結束，不如給你一次驚險的政治豪賭：賭輸，總統遭罷免；賭贏，聲望大幅回升、憲政危機直接砍去三分之一，換來喘息空間。
+      </div>
+    </div>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>公民（立委）罷免潮</span>
+        <span class="trade-dir">自動觸發 · 雙向</span>
+      </div>
+      <div class="trade-box-body">
+        當民主指數持續偏低，公民社會會自發醞釀罷免特定立委——目標永遠是「國會結構中佔多數的一方」，執政多數時打執政黨籍立委，朝小野大時打在野立委，你完全無法指定或介入。成功率經過歷史校準，落在2%~15%之間（呼應2016年迄今全台立委層級罷免案1勝33敗、約3%的真實成功率），即使觸發也大機率會失敗，但它會反覆出現，是這個政治體系裡持續運作的背景壓力。
+      </div>
+    </div>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>解散國會重新選舉</span>
+        <span class="trade-dir">危機下的政治賭博</span>
+      </div>
+      <div class="trade-box-body">
+        僅能在「國會不信任案通過」的情境下由你選擇發動。結果分三種：完全執政（結構大幅躍升）、僵局維持（結構小幅波動）、朝小野大（結構進一步惡化）。即使聲望極高，完全執政的機率上限仍鎖定在45%——這不是一顆聲望夠高就穩贏的按鈕，而是真正的政治賭博，賭輸了還會有額外的聲望懲罰。
+      </div>
+    </div>
+
+    <div class="trade-box">
+      <div class="trade-box-header">
+        <span>立法委員定期改選</span>
+        <span class="trade-dir">任期第2年第6月 · 強制觸發</span>
+      </div>
+      <div class="trade-box-body">
+        呼應四年任期的現實節奏，這是<strong>你唯一能提前規劃、確定會發生</strong>的翻轉國會結構機會。選舉結果吃的是<strong>你整個任期以來的聲望、經貿、憲政危機均值</strong>，而非臨場的單次擲骰運氣——這代表選前臨時抱佛腳沒有用，唯有長期穩健施政，才能在這個時間點上真正兌現政治資本。GM不會告訴你當前的任期均值是多少，你只能憑對自己整體施政表現的感受去判斷勝算。
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-label">設計哲學</div>
+      這一整組機制的核心精神是：政治結構是硬現實，不是靠嘴皮子或一次性操作就能翻轉的東西。你能主動掌握的，只有撤換閣揆這一顆棋子，以及是否賭上解散國會；其餘的攻防，都是長期施政表現的自然結果。這比V3.06時期「協商幾次就能拉高在野滿意度」的舊邏輯，更貼近真實民主政治的樣貌。
     </div>
   </div>
 
@@ -904,7 +985,7 @@
   <div class="section">
     <h3>二、行動類型</h3>
     <table class="faction-table">
-      <tr><th>行動</th><th>消耗</th><th>說明</th></tr>
+      <tbody><tr><th>行動</th><th>消耗</th><th>說明</th></tr>
       <tr><td>一般行政</td><td>AP 1</td><td>單一部門執行標準政務行動</td></tr>
       <tr><td>跨部會專案</td><td>AP 2</td><td>需要多部門協調的大型行動</td></tr>
       <tr><td>訓練【排他】</td><td>AP 1</td><td>提升訓練度，本回合不可執行其他行動</td></tr>
@@ -912,7 +993,7 @@
       <tr><td>持續任務【排他】</td><td>AP 1</td><td>推進長期進行中的任務</td></tr>
       <tr><td>統帥自主行動</td><td>AP 2</td><td>每回合限1次，由統帥親自主導，成功率受聲望影響</td></tr>
       <tr><td>動員擴編（僅聯三）</td><td>AP 1</td><td>日制限定，提升人力但有失敗風險</td></tr>
-    </table>
+    </tbody></table>
   </div>
 
   <div class="section">
@@ -920,7 +1001,7 @@
     <p>超過三回合的重大事項必須建立「持續任務卡」，明確記錄工期、每回合預算與完成效果。GM會在每回合階段一簡報持續任務的進度。中途中斷任務，已投入資源不返還，且可能觸發負面事件。</p>
     <div class="callout tip">
       <div class="callout-label">國防長期投資</div>
-      國防與海委會可提議執行大型國防採購案（如新式戰機、潛艦、防空飛彈、特戰訓練等），完成後在日制階段帶來關鍵戰力加成。這些投資需要數回合才能完成，且通常需要外交與SAI指數達到門檻，是月制最重要的長期戰略投資之一。
+      國防與海委會可提議執行大型國防軍購案（如新式戰機、潛艦、防空飛彈、特戰訓練等），完成後在日制階段帶來關鍵戰力加成。這些大型採購案須經立法院表決通過，且通常需要數回合才能完成，且通常需要外交與SAI指數達到門檻，是月制最重要的長期戰略投資之一。
     </div>
   </div>
 
@@ -996,7 +1077,7 @@
     <div class="example">
 <span class="prompt">【GM報告】</span> 本回合觸發事件：<br>
 「認知作戰攻勢」<br>
-預期效果：穩定度下降、在野滿意受損<br>
+預期效果：穩定度下降、士氣受損<br>
 請問統帥是否採取回應行動？<br>
 <br>
 <span class="prompt">【統帥回應】</span><br>
@@ -1045,7 +1126,7 @@
 <br>
 <span class="comment">// 重大法案、軍購、修憲、戒嚴</span><br>
 <span class="comment">// 均須經立法院表決</span><br>
-<span class="comment">// 在野滿意度、民主指數、聲望</span><br>
+<span class="comment">// 國會結構、民主指數、聲望</span><br>
 <span class="comment">// 都會影響法案通過率</span>
     </div>
   </div>
@@ -1074,12 +1155,12 @@
     <h3>一、月制→日制切換</h3>
     <p>以下任一條件成立，即觸發切換，進入防衛作戰模式：</p>
     <table class="faction-table">
-      <tr><th>觸發條件</th><th>說明</th></tr>
+      <tbody><tr><th>觸發條件</th><th>說明</th></tr>
       <tr><td>地緣緊張度達100%</td><td>長期外交壓力累積，戰爭自動爆發</td></tr>
       <tr><td>綏靖戰略崩潰</td><td>四大指標同時跌至低位並持續惡化，共軍發出統一談判最後通牒</td></tr>
       <tr><td>統帥主動宣布戒嚴</td><td>玩家決策主動觸發，走向完整戰時體制</td></tr>
       <tr><td>統帥主動下令提升戰備 <span class="new-tag">V3.06</span></td><td>玩家決策主動觸發，走向較輕量的過渡體制（見下節）</td></tr>
-    </table>
+    </tbody></table>
 
     <p>切換發生時，40%的現有人力被鎖定為戰區兵力，其餘60%留守後備；部門體制切換為聯參；月制已完成的國防投資項目全數帶入日制。</p>
 
@@ -1095,7 +1176,7 @@
 
     <div class="callout">
       <div class="callout-label">體制限制與退場機制</div>
-      量能上限降為月制上限的80%；在野滿意度每月自動-3，作為維持備戰狀態的政治成本。地緣緊張度降至100%以下時，統帥可隨時下令解除，無懲罰接續切回月制。<br><br>
+      量能上限降為月制上限的80%；民主指數每月自動-3，作為維持備戰狀態的政治成本。地緣緊張度降至100%以下時，統帥可隨時下令解除，無懲罰接續切回月制。<br><br>
       但若地緣持續升溫並觸及100%，將自動升格為完整戒嚴體制——套用標準月制→日制切換步驟，第30天仍須進行戒嚴追認表決。
     </div>
 
@@ -1108,15 +1189,15 @@
 
     <div class="callout warn">
       <div class="callout-label">體制限制</div>
-      量能上限降為月制上限的60%；統帥自主行動成功率-15%；盟軍空中支援觸發率打7折。每10天自動：憲政危機+5、聲望-3、在野滿意-5。地緣緊張度維持100%不降。
+      量能上限降為月制上限的60%；統帥自主行動成功率-15%；盟軍空中支援觸發率打7折。每10天自動：憲政危機+5、聲望-3、民主-5。地緣緊張度維持100%不降。
     </div>
 
     <p>統帥每3個作戰回合可重新提出戒嚴案，套用標準戒嚴案否決率公式：</p>
     <table class="faction-table">
-      <tr><th>重提結果</th><th>後續</th></tr>
+      <tbody><tr><th>重提結果</th><th>後續</th></tr>
       <tr><td>通過</td><td>體制全數恢復正常戒嚴狀態，憲政危機不另外累加</td></tr>
       <tr><td>再次否決</td><td>憲政危機額外+20；本次日制禁止再提戒嚴案；緊急戰備狀態持續</td></tr>
-    </table>
+    </tbody></table>
 
     <p>脫離緊急戰備狀態的正常出路：共軍兵力&lt;50（觸發日制→月制切換）、或停火談判成功。</p>
 
@@ -1130,12 +1211,12 @@
     <h3>四、日制→月制切換（結束作戰）</h3>
     <p>以下任一條件成立，即觸發切換，結束日制進入戰後重建：</p>
     <table class="faction-table">
-      <tr><th>觸發條件</th><th>說明</th></tr>
+      <tbody><tr><th>觸發條件</th><th>說明</th></tr>
       <tr><td>共軍兵力&lt;50</td><td>敵方渡海部隊喪失持續作戰能力</td></tr>
       <tr><td>立法院否決戒嚴（被占方格&lt;3）</td><td>政治否決強制停戰</td></tr>
       <tr><td>統帥主動解除戒嚴或恢復常態</td><td>玩家決策停止作戰/備戰</td></tr>
       <tr><td>停火談判成功</td><td>累計完成5次停火談判（詳見下節）</td></tr>
-    </table>
+    </tbody></table>
   </div>
 
   <div class="section">
@@ -1170,7 +1251,7 @@
 <span class="label">■ 時間：</span><span class="value">2024年9月　第5回合</span>　<span class="label">模式：</span><span class="value">月制</span>
 <span class="label">■ 核心資源：</span><span class="value">國庫 135（月+11）</span>　<span class="value">物資 103（月+10）</span>　<span class="value">人力 100%</span>
 <span class="label">■ 動態指標：</span><span class="value">經貿 145</span>　<span class="value">民主 95</span>　<span class="value">外交 99</span>　<span class="value">聲望 96</span>　<span class="value">穩定度 84</span>
-<span class="label">■ 政治與地緣：</span><span class="value">在野 62</span>　<span class="value">軍方 101</span>　<span class="value">財閥 88</span>　<span class="value">憲政危機 0</span>　<span class="value">地緣 68%</span>
+<span class="label">■ 政治與地緣：</span><span class="value">國會結構 55%</span>　<span class="value">軍方 101</span>　<span class="value">財閥 88</span>　<span class="value">憲政危機 0</span>　<span class="value">地緣 68%</span>
 <span class="label">■ 部門狀態（訓練度%/量能）：</span>
 　<span class="value">國安會 50%/12</span>　<span class="value">內政 65%/10</span>　<span class="value">經貿 50%/8</span>
 　<span class="value">國防 60%/10</span>　<span class="value">外交 50%/2</span>　<span class="warn-val">← 量能警示</span>　<span class="value">數發 55%/13</span>
@@ -1273,13 +1354,13 @@
 
         <div style="flex:1; min-width:240px;">
           <table class="faction-table">
-            <tr><th>敵占連續海空格（北→南）</th><th>可開啟之地面九宮格</th></tr>
+            <tbody><tr><th>敵占連續海空格（北→南）</th><th>可開啟之地面九宮格</th></tr>
             <tr><td>格1＋格2 / 格2＋格3</td><td>北部＋東部九宮格（威脅首都圈）</td></tr>
             <tr><td>格3＋格4</td><td>北部＋中部九宮格</td></tr>
             <tr><td>格4＋格5 / 格5＋格6</td><td>中部九宮格</td></tr>
             <tr><td>格6＋格7</td><td>中部＋南部九宮格</td></tr>
             <tr><td>格7＋格8 / 格8＋格9</td><td>南部＋東部九宮格（威脅工業重鎮）</td></tr>
-          </table>
+          </tbody></table>
           <p style="font-size:12px;color:#888; margin-bottom:10px;">▲ 深藍=北段；藍=中段；紅=南段。預設全為我方控制。連續占領格數÷2（捨去小數）＝可同時開啟的登陸九宮格上限，最多3個。</p>
         </div>
 
@@ -1288,7 +1369,7 @@
 
     <div class="inf-map">
       <div class="inf-title">3 · 台灣本島四大作戰區（各9格，預設全為我方控制）——菱形佈局，北上南下、中東並列</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-areas:'north north' 'central east' 'south south'; gap:20px 28px; justify-items:center; max-width:520px; margin:20px auto;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-areas:&#39;north north&#39; &#39;central east&#39; &#39;south south&#39;; gap:20px 28px; justify-items:center; max-width:520px; margin:20px auto;">
 
         <div style="grid-area:north; text-align:center;">
           <div style="font-family:var(--sans); font-size:12px; font-weight:600; color:var(--blue-gov); margin-bottom:6px;">北部作戰區<br><span style="font-weight:400; color:#888; font-size:10px;">基隆/台北/新北/桃園/新竹/宜蘭</span></div>
@@ -1371,7 +1452,7 @@
     </div>
 
     <table class="faction-table" style="margin-top:16px;">
-      <tr><th>地形</th><th>防禦效果</th><th>特殊規則</th></tr>
+      <tbody><tr><th>地形</th><th>防禦效果</th><th>特殊規則</th></tr>
       <tr><td>山地</td><td>最強防禦加成</td><td>不論勝負物資固定消耗</td></tr>
       <tr><td>軍港/機場</td><td>強防禦</td><td>被占後後方補給永久降低20%</td></tr>
       <tr><td>城鎮</td><td>中等防禦</td><td>市區戰鬥持續損傷穩定度</td></tr>
@@ -1380,7 +1461,7 @@
       <tr><td>丘陵</td><td>輕微防禦</td><td>—</td></tr>
       <tr><td>灘岸</td><td>基本防禦</td><td>完成工事加固後大幅提升</td></tr>
       <tr><td>平原</td><td>無加成（甚至減損）</td><td>防守失敗兵力損失更重</td></tr>
-    </table>
+    </tbody></table>
   </div>
 
   <div class="section">
@@ -1402,7 +1483,7 @@
     <p>共軍的兵力並非無限——其登陸部隊仰賴大陸沿岸三個作戰區持續投送與補充（詳見上方全圖）。這些作戰區本身不可被國軍占領，但統帥可透過特種部隊行動癱瘓其補充節奏，是牽制敵方攻勢強度的關鍵手段。</p>
 
     <table class="faction-table">
-      <tr><th>作戰區</th><th>啟動門檻</th><th>投送方向</th><th>沿海目標</th><th>內陸目標</th></tr>
+      <tbody><tr><th>作戰區</th><th>啟動門檻</th><th>投送方向</th><th>沿海目標</th><th>內陸目標</th></tr>
       <tr>
         <td><strong>北部・浙江</strong></td>
         <td>地緣緊張度 &gt;80%</td>
@@ -1424,7 +1505,7 @@
         <td>軍港機場／灘岸／軍港機場</td>
         <td>軍港機場／丘陵／平原</td>
       </tr>
-    </table>
+    </tbody></table>
 
     <div class="callout tip">
       <div class="callout-label">打擊價值</div>
@@ -1437,7 +1518,7 @@
     <p>日制中，統帥可調用以下特殊行動，針對上述共軍後方目標區打破僵局：</p>
 
     <table class="faction-table">
-      <tr><th>行動</th><th>執行部門</th><th>效果</th><th>限制</th></tr>
+      <tbody><tr><th>行動</th><th>執行部門</th><th>效果</th><th>限制</th></tr>
       <tr>
         <td><strong>戰略情報偵察</strong></td>
         <td>國安會/聯二</td>
@@ -1448,7 +1529,7 @@
         <td><strong>遠程反制作戰</strong></td>
         <td>聯三</td>
         <td>針對偵察標定之目標格實施打擊，暫停對應作戰區兵力補充能力3回合</td>
-        <td>每3回合1次，共5次；一次性物資消耗5</td>
+        <td>每3回合1次，共5次；一次性物資消耗3</td>
       </tr>
       <tr>
         <td><strong>特種滲透作戰</strong></td>
@@ -1456,7 +1537,7 @@
         <td>針對沿海軍港機場格滲透，暫停對應作戰區兵力補充能力5回合，成功率較高</td>
         <td>每3回合1次，共5次；預扣兵力3作代價，成功返還</td>
       </tr>
-    </table>
+    </tbody></table>
   </div>
 
   <!-- CH12 勝利 -->
@@ -1496,7 +1577,7 @@
   <p>任一條件成立即立即觸發遊戲結束。GM每回合必須明確追蹤以下狀態。</p>
 
   <table class="faction-table">
-    <tr><th>失敗條件</th><th>觸發門檻</th></tr>
+    <tbody><tr><th>失敗條件</th><th>觸發門檻</th></tr>
     <tr><td>聲望歸零</td><td>聲望降至0</td></tr>
     <tr><td>兵力耗盡</td><td>人力降至0且無法補充</td></tr>
     <tr><td>資源斷絕</td><td>任一資源月制連續3月歸零；日制連續90日歸零</td></tr>
@@ -1505,9 +1586,9 @@
     <tr class="danger"><td>主權淪喪②</td><td>北部作戰區被敵方完整占領（單獨觸發即結束）</td></tr>
     <tr class="danger"><td>主權淪喪③④</td><td>綏靖崩潰狀態下主動解除戒嚴、否決戒嚴，或接受統一談判</td></tr>
     <tr><td>政府癱瘓</td><td>綏靖崩潰狀態持續10回合未解除</td></tr>
-    <tr><td>內戰/政變</td><td>Bypass強行維持戒嚴後，民主與在野連續3回合雙雙歸零</td></tr>
+    <tr><td>內戰/政變</td><td>Bypass強行維持戒嚴後，民主連續3回合歸零</td></tr>
     <tr class="danger"><td>政府垮台 <span class="new-tag">V3.06</span></td><td>緊急戰備狀態（戒嚴追認否決但共軍仍占方格≥3）持續超過15個作戰回合，且憲政危機≥80</td></tr>
-  </table>
+  </tbody></table>
 
   <!-- CH12 編年史 -->
   <div class="chapter">
@@ -1527,12 +1608,12 @@
     <p>若你在特定方向上持續投入5到7回合以上，系統會自動生成「國家發展路徑」，帶來對應的長期效果：</p>
 
     <table class="faction-table">
-      <tr><th>發展路徑</th><th>啟動條件（概略）</th><th>效果</th></tr>
+      <tbody><tr><th>發展路徑</th><th>啟動條件（概略）</th><th>效果</th></tr>
       <tr><td>全民防衛國家</td><td>軍事投資持續6回合以上</td><td>動員上限提升，但經貿承壓</td></tr>
       <tr><td>科技立國</td><td>科技投資持續6回合以上</td><td>財富歲入與物資產能提升</td></tr>
       <tr><td>民主燈塔</td><td>12回合未使用Bypass</td><td>憲政危機成長減緩，聲望更穩定</td></tr>
       <tr><td>戰時經濟</td><td>日制持續超過90天</td><td>物資產能大幅提升，但經貿受損</td></tr>
-    </table>
+    </tbody></table>
   </div>
 
   <div class="rule-line">
@@ -1540,16 +1621,17 @@
   <div class="callout tip">
     <div class="callout-label">最後的話</div>
     <p>台灣的處境，從來沒有容易的答案。</p>
-    <p style="margin-top:10px;">在野黨的訴求與軍方的需要往往相左，財閥的利益與長遠的國防佈局常常衝突，盟友的支持需要長期經營，而對手的壓力卻是每天都在累積。財政永遠不夠用，時間永遠不夠多，而局勢可以在任何一個你沒有防備的回合急轉直下。</p>
+    <p style="margin-top:10px;">國會結構的現實與軍方的需要往往相左，財閥的利益與長遠的國防佈局常常衝突，盟友的支持需要長期經營，而對手的壓力卻是每天都在累積。政治結構不會因為你嘴上說服而改變，財政永遠不夠用，時間永遠不夠多，而局勢可以在任何一個你沒有防備的回合急轉直下。</p>
     <p style="margin-top:10px;">有些玩法第一次遊玩不會想到，因為你對台灣真實處境的理解還不夠深，這沒有關係——每一次遊玩，都是一次思考台灣命運的機會。</p>
     <p style="margin-top:14px;">敬祝閣下推演順利。</p>
   </div>
 
   <div class="doc-footer">
-    <span>中華民國台灣模擬器 V3.06 ── 玩家使用說明書</span>
+    <span>中華民國台灣模擬器 V3.10 ── 玩家使用說明書</span>
     <span>Copyright © 2026 Kanon.Skywalker</span>
   </div>
 
 </div>
-</body>
-</html>
+
+
+</div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div><div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con"></div></div></div><umsdataelement id="UMSDataElement" style="display: none;"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div><div id="UMSSendDataEventElement" style="display: none;">init</div></body></html>
